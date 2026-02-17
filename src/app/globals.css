@@ -1,0 +1,45 @@
+:root {
+  --primary: #1b8bc0;
+  --primary2: #2a446c;
+  --background-color: #ededed;
+  --colorwhite: white;
+  --colorblack: black;
+  --success: #22c55e;
+  --error: #ef4444;
+  --warning: #f59e0b;
+}
+
+[data-theme="dark"] {
+  --primary: #1b8bc0;
+  --primary2: #2a446c;
+  --background-color: #000a18;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: clip;
+  font-family: var(--font-alexandria), sans-serif !important;
+}
+
+body {
+  font-family: var(--font-alexandria), sans-serif !important;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-alexandria), sans-serif !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

@@ -1,0 +1,61 @@
+.headerPage {
+  min-height: 75vh;
+  color: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px;
+}
+.headerPage::after {
+  content: "";
+  background: #0000009c;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.headerPage * {
+  z-index: 9;
+}
+.headerPage h1 {
+  font-size: 50px;
+}
+.headerPage .link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.headerPage .link a {
+  color: #1b8bc0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.4s;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+}
+.headerPage .link .i.ar {
+  transform: rotate(-45deg);
+  transition: 0.4s;
+}
+.headerPage .link .i.en {
+  transform: rotate(225deg);
+  transition: 0.4s;
+}
+.headerPage .link a:hover .i.ar {
+  transform: rotate(0deg);
+}
+.headerPage .link a:hover .i.en {
+  transform: rotate(180deg);
+}
+.headerPage .link h6 {
+  margin: 0;
+}

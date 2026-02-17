@@ -1,0 +1,337 @@
+.cases-page {
+  padding: 50px 0;
+}
+.cases-page .back-btn {
+  background: none;
+  border: none;
+  color: black;
+  margin: 30px 0 50px;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.4s;
+}
+.cases-page .back {
+  margin-top: 5px !important;
+}
+.cases-page .back-btn:hover {
+  color: var(--primary);
+}
+.cases-page .page-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 50px 0;
+}
+.cases-page .search {
+  border: 2px solid #ddd;
+  width: 400px;
+  padding: 8px;
+  border-radius: 10px;
+  color: #c0c0c0;
+}
+.cases-page .search-btn {
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.cases-page .search-btn:hover {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+.cases-page .search .icon1 {
+  width: 10%;
+}
+.cases-page .search input {
+  width: 80%;
+  border: none;
+  outline: none;
+  color: black;
+  background: transparent;
+}
+.cases-page .search .icon2 {
+  width: 10%;
+  transform: rotate(90deg);
+}
+.cases-page .list-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cases-page .sorting-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.cases-page .selected-option {
+  color: black;
+  padding: 10px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 170px;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  gap: 15px;
+}
+.cases-page .dropdown-arrow {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  color: rgb(156 163 175);
+}
+.cases-page .options-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 170px;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  /* max-height: 0; */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.cases-page .sorting-dropdown:hover .options-list {
+  max-height: 300px;
+}
+.cases-page .option-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+.cases-page .option-item:hover {
+  background-color: #f5f5f5;
+  color: #1b8bc0;
+}
+.cases-page .option-item.active {
+  /* background-color: #f0f7ff; */
+  color: #1b8bc0;
+  font-weight: 500;
+}
+.cases-page .checkmark {
+  color: #1b8bc0;
+  font-weight: bold;
+}
+/* ===== Type Filters ===== */
+.cases-page .type-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+.cases-page .type-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.25s;
+  color: #080808;
+}
+.cases-page .type-btn:hover {
+  background: #eee;
+}
+.cases-page .type-btn.active {
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+.cases-page .cases-box {
+  border: 2px solid #1b8bc0;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+.cases-page .cases-box .img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.cases-page .cases-box .img img {
+  width: 100% !important;
+  height: 100% !important;
+}
+.cases-page .cases-box .img .span-1 {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: beige;
+  color: black;
+  padding: 5px 7px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.cases-page .cases-box .conten {
+  padding: 15px 7px;
+}
+.cases-page .cases-box .conten h4 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.cases-page .cases-box .conten p {
+  font-size: 15px;
+}
+.cases-page .cases-box .conten .type-foundation {
+  display: flex;
+  gap: 20px;
+  align-self: center;
+}
+.cases-page .cases-box .conten .type-foundation .itme {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 7px;
+}
+.cases-page .cases-box .conten .type-foundation .itme .icon-type {
+  color: #01affb;
+}
+.cases-page .cases-box .conten .type-foundation .itme p {
+  margin: 0;
+}
+.cases-page .cases-box .conten h5 {
+  font-size: 15px;
+}
+.cases-page .cases-box .conten a {
+  display: flex;
+  justify-content: center;
+  background: #1b8bc0;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #1b8bc0;
+  text-decoration: none;
+  color: white;
+  transition: 0.4s;
+}
+.cases-page .cases-box .conten a:hover {
+  background-color: transparent;
+  color: #1b8bc0;
+}
+.cases-page .cases-box .progress-wrapper {
+  width: 100%;
+  max-width: 500px;
+}
+.cases-page .cases-box .progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.cases-page .cases-box .progress-bg {
+  width: 100%;
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.cases-page .cases-box .progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #1b8bc0, #01affb);
+  border-radius: 20px;
+  transition: width 1.5s ease;
+}
+.cases-page .btn-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.cases-page .btn-link a {
+  text-decoration: none;
+  background: #1b8bc0;
+  padding: 10px 25px;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid #1b8bc0;
+  cursor: pointer;
+}
+.cases-page .btn-link a:hover {
+  background: transparent;
+  color: #1b8bc0;
+  transition: 0.5s;
+}
+/* تحسين شريط التقدم */
+.cases-page .cases-box .progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.cases-page .cases-box .progress-bg {
+  width: 100%;
+  height: 10px; /* أنحف قليلاً لتبدو عصرية */
+  background: #f0f0f0;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.cases-page .cases-box .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1b8bc0, #01affb);
+  border-radius: 10px;
+  transition: width 2s cubic-bezier(0.1, 0.5, 0.5, 1); /* أنيميشن ناعم جداً */
+}
+
+.cases-page .cases-box .amount-text {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.cases-page .cases-box .amount-text b {
+  color: #1b8bc0;
+}
+
+/* تحسين صورة المؤسسة */
+.cases-page .cases-box .conten .type-foundation .itme img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* الوضع الليلي */
+[data-theme="dark"] .cases-page .cases-box .progress-info {
+  color: #ccc;
+}
+[data-theme="dark"] .cases-page .cases-box .progress-bg {
+  background: #333;
+}
+[data-theme="dark"] {
+  .cases-page {
+    background-color: #080808;
+    color: white;
+  }
+  .cases-page .cases-box .conten {
+    background-color: #0c0c0c;
+    color: white;
+  }
+}

@@ -1,0 +1,147 @@
+.cases-section {
+  padding: 50px 0;
+}
+.cases-section .cases-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.cases-section .cases-content h2 {
+  font-size: 35px;
+  font-weight: 500;
+  color: #1b8bc0;
+}
+.cases-section .cases-content p {
+  max-width: 400px;
+}
+
+.cases-section .cases-box {
+  border: 2px solid #1b8bc0;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+.cases-section .cases-box .img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.cases-section .cases-box .img img {
+  width: 100% !important;
+  height: 100% !important;
+}
+.cases-section .cases-box .img .span-1 {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: beige;
+  color: black;
+  padding: 5px 7px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.cases-section .cases-box .conten {
+  padding: 15px 7px;
+}
+.cases-section .cases-box .conten h4 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.cases-section .cases-box .conten p {
+  font-size: 15px;
+}
+.cases-section .cases-box .conten .type-foundation {
+  display: flex;
+  gap: 20px;
+  align-self: center;
+}
+.cases-section .cases-box .conten .type-foundation .itme {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 7px;
+}
+.cases-section .cases-box .conten .type-foundation .itme .icon-type {
+  color: #01affb;
+}
+.cases-section .cases-box .conten .type-foundation .itme p {
+  margin: 0;
+}
+.cases-section .cases-box .conten h5 {
+  font-size: 15px;
+}
+.cases-section .cases-box .conten a {
+  display: flex;
+  justify-content: center;
+  background: #1b8bc0;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #1b8bc0;
+  text-decoration: none;
+  color: white;
+  transition: 0.4s;
+}
+.cases-section .cases-box .conten a:hover {
+  background-color: transparent;
+  color: #1b8bc0;
+}
+.cases-section .cases-box .progress-wrapper {
+  width: 100%;
+  max-width: 500px;
+}
+.cases-section .cases-box .progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.cases-section .cases-box .progress-bg {
+  width: 100%;
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.cases-section .cases-box .progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #1b8bc0, #01affb);
+  border-radius: 20px;
+  transition: width 1.5s ease;
+}
+
+.cases-section .link {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.cases-section .link a {
+  text-decoration: none;
+  background: #1b8bc0;
+  padding: 10px 25px;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid #1b8bc0;
+  cursor: pointer;
+}
+.cases-section .link a:hover {
+  background: transparent;
+  color: #1b8bc0;
+  transition: 0.5s;
+}
+
+[data-theme="dark"] {
+  .cases-section {
+    background-color: #080808;
+    color: white;
+  }
+  .cases-section .cases-box .conten {
+    background-color: #0c0c0c;
+    color: white;
+  }
+}

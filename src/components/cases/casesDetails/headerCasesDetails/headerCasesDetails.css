@@ -1,0 +1,250 @@
+.header-cases-details-contact .header-cases-details {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  margin-bottom: 35px;
+}
+.header-cases-details-contact .header-cases-details .image {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.header-cases-details-contact .header-cases-details .image .status {
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  gap: 20px;
+  top: 10px;
+  right: 20px;
+}
+.header-cases-details-contact .header-cases-details .image .status .span-1 {
+  background: #009505;
+  padding: 5px 10px;
+  border-radius: 34px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.header-cases-details-contact .header-cases-details .image .status .span-2 {
+  background: #004ec3;
+  padding: 5px 10px;
+  border-radius: 34px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.header-cases-details-contact .header-cases-details h2 {
+  margin: 20px 0;
+  font-size: 30px;
+  font-weight: 600;
+}
+.header-cases-details-contact .header-cases-details .info {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.header-cases-details-contact .header-cases-details .info h6 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 0;
+}
+
+.header-cases-details-contact .header-cases-details .info h6 .i {
+  color: #0d6efd;
+}
+.header-cases-details-contact .progress-cases {
+  margin-bottom: 15px;
+}
+.header-cases-details-contact .progress-cases .itme {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 20px 5px;
+  border-radius: 10px;
+  height: 110px;
+}
+.header-cases-details-contact .progress-cases .itme p {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 800;
+  color: #0d6efd;
+}
+.header-cases-details-contact .progress-cases .itme h6 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+.header-cases-details-contact .contact-cases {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+.header-cases-details-contact .contact-cases h5 {
+  font-size: 25px;
+  font-weight: 600;
+}
+.header-cases-details-contact .contact-cases p {
+  font-size: 14px;
+}
+
+.header-cases-details-contact .contact-cases .warning {
+  background: #ff8d006b;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-right: 5px solid #ff8100;
+}
+.header-cases-details-contact .contact-cases .warning p {
+  margin: 0;
+}
+.header-cases-details-contact .contact-cases .warning .i {
+  color: brown;
+}
+.header-cases-details-contact .contact-cases h6 {
+  font-size: 25px;
+  font-weight: 500;
+}
+.header-cases-details-contact .contact-cases ul {
+  padding: 0 30px;
+}
+.header-cases-details-contact .contact-cases ul li {
+  color: cornflowerblue;
+}
+.header-cases-details-contact .contact-cases ul li p {
+  color: black;
+  margin: 0;
+}
+.header-cases-details-contact .documents-cases {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+.header-cases-details-contact .documents-cases h5 {
+  font-size: 25px;
+  font-weight: 600;
+}
+.header-cases-details-contact .documents-cases .documents {
+  display: flex;
+  gap: 15px;
+  margin: 25px 0;
+}
+.header-cases-details-contact .documents-cases .documents .itme {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: black;
+  background: #ededed;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.header-cases-details-contact .documents-cases .documents .itme .i {
+  padding: 12px 10px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+.header-cases-details-contact .documents-cases .documents .itme .pdf {
+  background: #ff002366;
+  color: #ff0000;
+}
+.header-cases-details-contact .documents-cases .documents .itme .video {
+  background: #ef00ff59;
+  color: #f000ff;
+}
+.header-cases-details-contact .documents-cases .documents .itme .image {
+  background: #0000ff59;
+  color: blue;
+}
+.header-cases-details-contact .documents-cases .documents .itme h6 {
+  margin: 0;
+}
+.header-cases-details-contact .Status-update {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+.header-cases-details-contact .Status-update h4 {
+  font-size: 25px;
+  font-weight: 600;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.header-cases-details-contact .Status-update h4 .i {
+  color: #0d6efd;
+}
+.header-cases-details-contact .Status-update ul {
+  padding: 0 50px;
+}
+.header-cases-details-contact .Status-update ul li {
+  margin: 20px 0;
+  font-size: 30px;
+  color: #0d6efd;
+  transition: 0.4s;
+}
+.header-cases-details-contact .Status-update ul li div {
+  background: #efefef;
+  padding: 20px;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+.header-cases-details-contact .Status-update ul li h6 {
+  color: #0d6efd;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  transition: 0.4s;
+}
+.header-cases-details-contact .Status-update ul li h5 {
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+}
+.header-cases-details-contact .Status-update ul li p {
+  color: #5f5f5f;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+.header-cases-details-contact .Status-update ul li div:hover {
+  background-color: #00ff4c4b;
+}
+.header-cases-details-contact .Status-update ul li:hover,
+.header-cases-details-contact .Status-update ul div:hover h6 {
+  color: #10ff00;
+}
+
+[data-theme="dark"] {
+  .header-cases-details-contact .header-cases-details,
+  .header-cases-details-contact .Status-update,
+  .header-cases-details-contact .documents-cases,
+  .header-cases-details-contact .contact-cases,
+  .header-cases-details-contact .progress-cases .itme {
+    background-color: #181818;
+    color: white;
+  }
+  .header-cases-details-contact .documents-cases .documents .itme {
+    color: white;
+    background: #000000;
+  }
+  .header-cases-details-contact .Status-update ul li div {
+    background: #000000;
+  }
+  .header-cases-details-contact .Status-update ul li h5 {
+    color: white;
+  }
+}

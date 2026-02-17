@@ -1,0 +1,108 @@
+.organizations-section {
+  padding: 60px 0;
+  min-height: 100vh;
+  background-color: var(--colorwhite);
+  color: var(--colorblack);
+  overflow: hidden;
+  background-color: white;
+}
+.organizations-section .section-title {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.organizations-section .section-title h2 {
+  font-size: 35px;
+  font-weight: 600;
+  color: #2a446c;
+}
+.organizations-section .section-title p {
+  max-width: 420px;
+  line-height: 1.2;
+  font-size: 15px;
+}
+.organizations-section .organization-box {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  /* border: 2px solid #818181; */
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 15px #77777763;
+      justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.organizations-section .organization-box .box-content h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1b8bc0;
+}
+.organizations-section .organization-box .box-content p {
+  font-size: 15px;
+}
+.organizations-section .organization-box .box-content h6 {
+  font-weight: 700 !important;
+}
+.organizations-section .organization-box .box-content h6 span {
+  color: #1b8bc0;
+  font-size: 22px;
+}
+
+.organizations-section .organization-box .box-content a {
+  text-decoration: none;
+  color: white;
+  background: #1b8bc0;
+  margin-top: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 3px solid #1b8bc0;
+  font-weight: 500;
+  transition: 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+.organizations-section .organization-box .box-content a:hover {
+  background-color: transparent;
+  color: #1b8bc0;
+}
+
+.organizations-section .link {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.organizations-section .link a {
+  text-decoration: none;
+  background: #1b8bc0;
+  padding: 10px 25px;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid #1b8bc0;
+  cursor: pointer;
+}
+.organizations-section .link a:hover {
+  background: transparent;
+  color: #1b8bc0;
+  transition: 0.5s;
+}
+
+[data-theme="dark"] {
+  .organizations-section {
+    background: #080808;
+    color: white;
+  }
+  .organizations-section .organization-box {
+    background: #101010;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #636363;
+    margin-bottom: 20px;
+  }
+}

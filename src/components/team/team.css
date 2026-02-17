@@ -1,0 +1,117 @@
+/* ===== CONTAINER ===== */
+.tilt-wrapper {
+  text-align: center;
+  padding: 60px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* يثبت كل شيء في نص الشاشة */
+}
+
+/* ===== TITLE ===== */
+.tilt-title {
+  font-size: 32px;
+  margin-bottom: 35px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* ===== SLIDER AREA ===== */
+.tilt-slider {
+  position: relative;
+  height: 320px;
+  width: 100%;
+  max-width: 450px; /* يحدد المنطقة المتجاوبة */
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== EACH SLIDE ===== */
+.tilt-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transition: 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.tilt-img {
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+
+/* ===== REVIEW AREA ===== */
+.tilt-review-box {
+  margin-top: 30px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.tilt-review-box h3 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.tilt-review-box p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* ===== NAV BUTTONS ===== */
+.tilt-nav {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.tilt-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #ff7a00;
+  color: #fff;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tilt-btn:hover {
+  transform: scale(1.1);
+  background: #ff8e20;
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .tilt-slider {
+    max-width: 360px;
+    height: 280px;
+  }
+  .tilt-card {
+    transform: scale(0.9);
+  }
+}
+
+/* Mobiles */
+@media (max-width: 480px) {
+  .tilt-title {
+    font-size: 26px;
+  }
+
+  .tilt-slider {
+    max-width: 300px;
+    height: 250px;
+  }
+
+  .tilt-card {
+    transform-origin: center;
+  }
+
+  .tilt-img {
+    width: 180px !important;
+    height: 210px !important;
+  }
+}

@@ -1,0 +1,129 @@
+/* الخلفية المظلمة */
+.share-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+/* صندوق المشاركة */
+.share-popup {
+  background: var(--colorwhite);
+  padding: 15px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
+  animation: slideUp 0.3s ease;
+}
+
+/* أزرار الروابط داخل الـ Popup */
+.share-links {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.share-links a,
+.share-links .copy-link {
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.3s;
+  border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d9d9d9;
+  color: #000000;
+  transition: 0.4s;
+}
+
+.share-links a:hover {
+  background: var(--primary);
+  color: white;
+}
+.share-links .copy-link:hover {
+  background: var(--primary);
+  color: white;
+}
+.share-links .i {
+  font-size: 25px;
+  margin: 0 5px;
+  transition: 0.4s;
+}
+.share-links a .facebook-icon {
+  color: #3b5998;
+}
+.share-links a .twitter-icon {
+  color: #1da1f2;
+}
+.share-links a .whatsapp-icon {
+  color: #25d366;
+}
+.share-links a .telegram-icon {
+  color: #0088cc;
+}
+.share-links a:hover .i,
+.share-links .copy-link:hover {
+  color: white !important;
+}
+.close-btn {
+  width: 100%;
+  background: #9b0000;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.4s;
+}
+.close-btn:hover {
+  background: #ff0000;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+[data-theme="dark"] {
+  .share-popup {
+    background: #0c0c0c;
+    color: white;
+    box-shadow: 0 10px 30px rgb(85 85 85 / 30%);
+  }
+  .share-links a,
+  .share-links .copy-link {
+    border: 1px solid #555151;
+    background: #121212;
+    color: white;
+  }
+  .share-links a:hover,
+  .share-links .copy-link:hover {
+    background: var(--primary);
+    color: white;
+  }
+}

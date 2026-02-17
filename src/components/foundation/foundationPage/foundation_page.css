@@ -1,0 +1,218 @@
+.foundation-page {
+  padding: 70px 0;
+}
+.foundation-page .back-btn {
+  background: none;
+  border: none;
+  color: black;
+  margin: 30px 0 50px;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.4s;
+}
+.foundation-page .back {
+  margin-top: 5px !important;
+}
+.foundation-page .back-btn:hover {
+  color: var(--primary);
+}
+.foundation-page .page-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 50px 0;
+}
+.foundation-page .search {
+  border: 2px solid #ddd;
+  width: 400px;
+  padding: 8px;
+  border-radius: 10px;
+  color: #c0c0c0;
+}
+.search-btn {
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-btn:hover {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.foundation-page .search .icon1 {
+  width: 10%;
+}
+.foundation-page .search input {
+  width: 80%;
+  border: none;
+  outline: none;
+  color: black;
+  background: transparent;
+}
+.foundation-page .search .icon2 {
+  width: 10%;
+  transform: rotate(90deg);
+}
+.sorting-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.selected-option {
+  color: black;
+  padding: 10px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 170px;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  gap: 15px;
+}
+.dropdown-arrow {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  color: rgb(156 163 175);
+}
+.options-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 170px;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  /* max-height: 0; */
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.sorting-dropdown:hover .options-list {
+  max-height: 300px;
+}
+
+.option-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.option-item:hover {
+  background-color: #f5f5f5;
+  color: #1b8bc0;
+}
+
+.option-item.active {
+  /* background-color: #f0f7ff; */
+  color: #1b8bc0;
+  font-weight: 500;
+}
+
+.checkmark {
+  color: #1b8bc0;
+  font-weight: bold;
+}
+
+.foundation-page .organization-box {
+  background: transparent;
+  padding: 15px;
+  border-radius: 10px;
+  /* border: 2px solid #818181; */
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 15px #77777763;
+}
+.foundation-page .organization-box .box-content h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1b8bc0;
+}
+.foundation-page .organization-box .box-content p {
+  font-size: 15px;
+  min-height: 45px;
+}
+.foundation-page .organization-box .box-content h6 {
+  font-weight: 700 !important;
+}
+.foundation-page .organization-box .box-content h6 span {
+  color: #1b8bc0;
+  font-size: 22px;
+}
+.foundation-page .organization-box .box-content a {
+  text-decoration: none;
+  color: white;
+  background: #1b8bc0;
+  margin-top: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 3px solid #1b8bc0;
+  font-weight: 500;
+  transition: 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+.foundation-page .organization-box .box-content a:hover {
+  background-color: transparent;
+  color: #1b8bc0;
+  /* border: 3px solid white; */
+}
+
+[data-theme="dark"] {
+  .foundation-page {
+    background-color: #060606;
+  }
+  .foundation-page .back-btn {
+    color: white;
+  }
+  .foundation-page .back-btn:hover {
+    color: var(--primary);
+  }
+  .selected-option {
+    color: #ffffff;
+    background: #1e1e1e;
+    border: 2px solid #6b6b6b;
+  }
+  .options-list {
+    background: #1e1e1e;
+    color: white;
+  }
+  .option-item:hover {
+    background-color: black;
+    color: #1b8bc0;
+  }
+  .foundation-page .organization-box {
+    background-color: black;
+    color: white;
+    box-shadow: 0px 0px 15px #3f3f3f63;
+  }
+  .foundation-page .search {
+    border: 2px solid #434343;
+  }
+  .foundation-page .search input {
+    color: white;
+  }
+}

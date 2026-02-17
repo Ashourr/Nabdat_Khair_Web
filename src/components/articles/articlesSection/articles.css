@@ -1,0 +1,224 @@
+.articles-section {
+  padding: 50px 0;
+}
+.articles-section .title {
+  text-align: center;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 0.5s ease;
+}
+.articles-section .title h2 {
+  font-size: 35px;
+  font-weight: 600;
+  color: #2a446c;
+}
+.articles-section .title p {
+  max-width: 350px;
+  line-height: 1.4;
+  font-size: 19px;
+}
+
+/* Default style لكل الشاشات */
+.articles-section .articles-boxs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.articles-section .articles-box {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  height: 400px;
+  width: 100%;
+  transition: all 0.5s ease;
+}
+.articles-section .articles-box .spans {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 15px;
+}
+.articles-section .articles-box .spans.en {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 15px;
+}
+.articles-section .articles-box .spans span {
+  font-size: 15px;
+  background: white;
+  padding: 6px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.articles-section .articles-box .content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* background: burlywood;
+   */
+  backdrop-filter: blur(30px);
+  /* backdrop: ; */
+  padding: 10px;
+  width: 100%;
+}
+.articles-section .articles-box .content h5 {
+  font-size: 18px;
+  color: black;
+  font-weight: 700;
+}
+.articles-section .articles-box .content p {
+  font-size: 14px;
+  color: white;
+}
+.articles-section .articles-box .content a {
+  width: fit-content;
+  border: 2px solid;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  font-size: 15px;
+  padding: 7px 20px;
+  background: #1b8bc0;
+  border-radius: 10px;
+}
+.articles-section .articles-box .content a .i {
+  transform: rotate(45deg);
+  transition: 0.4s;
+}
+.articles-section .articles-box .content a .i.en {
+  transform: rotate(135deg);
+  transition: 0.4s;
+}
+.articles-section .articles-box .content a:hover .i {
+  transform: rotate(0deg);
+}
+.articles-section .articles-box .content a:hover .i.en {
+  transform: rotate(180deg);
+}
+.articles-section .link {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.articles-section .link a {
+  text-decoration: none;
+  background: #1b8bc0;
+  padding: 10px 25px;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid #1b8bc0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.articles-section .link a:hover {
+  background: transparent;
+  color: #1b8bc0;
+}
+
+/* Styles للشاشات الكبيرة */
+@media (min-width: 767px) {
+  .articles-section .articles-boxs {
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+  }
+  .articles-section .articles-box {
+    width: 150px;
+    opacity: 0.7;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-end;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+  .articles-section .articles-box.glass-active {
+    width: 300px;
+    opacity: 1;
+    border-radius: 30px;
+    transform: scale(1);
+  }
+  .articles-section .articles-box .spans,
+  .articles-section .articles-box .content {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease,
+      visibility 0.5s ease;
+  }
+  .articles-section .articles-box.glass-active .spans,
+  .articles-section .articles-box.glass-active .content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .articles-section .articles-box:hover {
+    transform: scale(1);
+  }
+  .articles-section .articles-box .icon-aye {
+    position: absolute;
+    top: 45px;
+    left: 36%;
+    display: block;
+    transform: translateY(-50%);
+    z-index: 99999;
+    color: black;
+    font-size: 21px;
+    background: white;
+    padding: 8px 5px;
+    border-radius: 50%;
+    opacity: 1;
+  }
+  .articles-section .articles-box:hover .icon-aye,
+  .articles-section .articles-box.glass-active .icon-aye {
+    opacity: 0;
+  }
+}
+
+/* Styles للشاشات الصغيرة */
+@media (max-width: 766px) {
+  .articles-section .articles-boxs {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .articles-section .articles-box {
+    width: 100%;
+    opacity: 1;
+    border-radius: 10px;
+    transform: scale(1);
+    margin-bottom: 20px;
+  }
+  .articles-section .articles-box .spans,
+  .articles-section .articles-box .content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .articles-section .articles-box:hover {
+    transform: scale(1);
+  }
+}
+[data-theme="dark"] {
+  .articles-section {
+    background-color: #080808;
+    color: white;
+  }
+  .articles-section .articles-box .spans span {
+    color: black;
+  }
+  .articles-section .articles-box .icon-aye {
+    display: none;
+  }
+}

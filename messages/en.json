@@ -1,0 +1,229 @@
+{
+  "LocaleSwitcher": {
+    "english": "En",
+    "arabic": "Ar"
+  },
+
+  "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "foundation": "foundations",
+    "Donate": "Donate",
+    "contact": "Contact Us",
+    "register": "Login",
+    "registerUser": "Register User",
+    "registerVolunteer": "Register Volunteer",
+    "registerOrganization": "Register Organization"
+  },
+
+  "header": {
+    "btn1": "Donate Now",
+    "btn2": "Zakat Calculator"
+  },
+
+  "slider": {
+    "title1": "Together, we make a difference and give hope to those in need 🤍",
+    "title2": "Nabdah Khair… a platform that brings good to its people 🌍",
+    "title3": "Because giving deserves trust 🛡️"
+  },
+
+  "about": {
+    "title": "About Us ?",
+    "btn": "Learn more about Nabdah Khair",
+    "title-page": "About Us",
+    "link-page": "Home",
+    "suptitle-page": "About Us",
+    "title-story": "Platform Story & Founding History",
+    "description-story": "The idea of Nabdah Khair emerged from the need for a reliable platform that combines ease of donation with clear impact, after observing the difficulty in accessing documented cases and the lack of clarity in donation paths in many initiatives.",
+    "our-story": "Nabdah Khair was founded with the aim of",
+    "des-story": "Since its launch, the platform has sought to be an effective humanitarian link between charity and its people.",
+    "title-mission": "The Future We Create",
+    "description-mission": "We look forward to a world where humanitarian aid is within reach of every willing hand to give, and where the result of every charitable impulse (Nabdah) is visible and tangible.",
+    "title-team": "Work Team",
+    "decrption-team": "Behind every achievement at Nabdah Khair is an integrated team working with passion and dedication to achieve the platform's mission."
+  },
+
+  "pageLinks": {
+    "title": "Browse Nabdah Khair Pages",
+    "decrption": "Everything you need for quick access to the platform's pages.",
+    "title-page": "Browse Nabdah Khair Pages",
+    "link-page": "Home",
+    "suptitle-page": "Quick Links",
+    "btn": "View All Pages"
+  },
+
+  "Organizations": {
+    "title": "Most Popular Partner Foundations",
+    "decrption": "We are proud to partner with a group of leading, accredited organizations that work with us to support humanitarian cases and provide aid to those in need.",
+    "title-page": "Partner Foundations",
+    "link-page": "Home",
+    "suptitle-page": "Partner Foundations",
+    "View Details": "View Details",
+    "donation": "Total Donations",
+    "cases": "Active Volunteers",
+    "btn": "View All Organizations"
+  },
+
+  "foundation-Details": {
+    "share": "Share",
+    "donate": "Donate Now",
+    "License-Number": "License Number",
+    "Supervisory-Authority": "Supervisory Authority",
+    "Legal-Authority": "Legal Authority",
+    "Share-with": "Share with",
+    "Facebook": "Facebook",
+    "WhatsApp": "WhatsApp",
+    "Telegram": "Telegram",
+    "Copy-Link": "Copy Link",
+    "Close": "Close",
+    "aboutUs": "About Us",
+    "vision-title": "Vision – Mission – Values",
+    "Vision": "Vision",
+    "CoreTask": "Core Task",
+    "message": "Message",
+    "timeline-title": "History & Foundation",
+    "timeline-description": "A humanitarian journey that started with an idea and transformed into an entity serving the community",
+    "PlatformStatistics": "The Impact in Numbers",
+    "PlatformStatistics-description": "Numbers that reflect the real scale of impact and the community's role in supporting humanitarian cases.",
+    "TotalCases": "Total Cases",
+    "TotalCampaigns": "Total Campaigns",
+    "TotalVolunteers": "Total Volunteers",
+    "TotalDonations": "Total Donations"
+  },
+
+  "services": {
+    "title": "Our Featured Services & Support Campaigns",
+    "title-page": "Services & Campaigns for Charity",
+    "link-page": "Home",
+    "suptitle-page": "Services & Campaigns for Charity",
+    "decrption": "We provide you with a range of services that meet your needs and help you achieve your charitable goals.",
+    "Campaign": "type of campaign",
+    "SupportNow": "Support Now",
+    "btn": "View All Services"
+  },
+
+  "cases": {
+    "title": "Humanitarian Cases",
+    "title-page": "Humanitarian Cases",
+    "link-page": "Home",
+    "suptitle-page": "Humanitarian Cases",
+    "description": "A collection of cases that need your support now. Each case is verified, with its data presented fully transparently, and you can contribute immediately.",
+    "btn": "View All Cases"
+  },
+
+  "Statistic-section": {
+    "title": "Statistics Section",
+    "subtitle": "Numbers That Make a Real Difference",
+    "description": "Through your support, Nabta Khair creates a tangible impact in the lives of thousands of beneficiaries daily.",
+    "title1": "Beneficiaries Reached",
+    "decrption1": "Thousands of individuals have received support and assistance through Nabdah Khair across various humanitarian fields.",
+    "title2": "Total Donations",
+    "decrption2": "Millions in donations have been raised and transparently directed to support verified cases and campaigns",
+    "title3": "Partner Organizations",
+    "decrption3": "A growing network of accredited organizations working with us to create real and sustainable impact.",
+    "title4": "Active Volunteers",
+    "decrption4": "Dedicated volunteers contributing their time and effort to monitor cases and carry out field missions.",
+    "title5": "Beneficiaries Count",
+    "decrption5": "Individuals who received direct support through the platform.",
+    "title6": "Volunteers",
+    "decrption6": "Contributing daily to field verification and follow-up.",
+    "title7": "Completed Cases",
+    "decrption7": "Treated or supported thanks to your contributions.",
+    "title8": "Partner Institutions",
+    "decrption8": "Verified and working with us to achieve a greater impact."
+  },
+
+  "Articles": {
+    "title": "Latest Articles & News",
+    "title-page": "Articles & News",
+    "link": "Home",
+    "suptitle-page": "Articles & News",
+    "description": "The best information in all software programs",
+    "btn": "View All Articles",
+    "btn-itme": "Read More",
+        "title-page-details": "Article Details",
+    "link-page-details": "Home",
+    "suptitle-page-details": "Articles & News - Article Details"
+  },
+
+  "video": {
+    "title": "A Beat from You… Creates a Life",
+    "description": "Your donation isn't just a number — it's new hope for someone in need right now.",
+    "btn-1": "Donate Now",
+    "btn-2": "Browse Cases",
+    "supported": "A minute of your time… could change an entire lifetime."
+  },
+
+  "Review": {
+    "subtitle": "What They Said About Us",
+    "title": "Real Stories from Hope Makers",
+    "title-page": "Reviews from Hope Makers",
+    "link-page": "Home",
+    "suptitle-page": "Reviews from Hope Makers",
+    "decrption": "Experiences and reviews from people who contributed to making a real difference through donation or volunteering, shared with you to inspire others and build trust.",
+    "btnadd": "Add a Review",
+    "more": "View more"
+  },
+
+  "reviewModel": {
+    "title": "Add Your Review",
+    "subtitle": "Help us improve service quality with your rating.",
+    "rating": "Your Rating",
+    "name": "Name",
+    "message": "Write Message",
+    "cancel": "Cancel",
+    "submit": "Submit"
+  },
+
+  "fqa": {
+    "title": "Frequently Asked Questions",
+    "title-page": "Frequently Asked Questions",
+    "link-page": "Home",
+    "suptitle-page": "Faq",
+    "decrption": "Here are the most common questions we receive, with clear answers to enhance your experience with us. If you don't find your question here, you can contact us directly.",
+    "text": "Here you will find clear and practical answers to everything on your mind."
+  },
+
+  "contact": {
+    "title": "Contact Us Easily",
+    "title-page": "Contact Us",
+    "link-page": "Home",
+    "suptitle-page": "Contact Us",
+    "decrption": "We have a team ready to answer your inquiries, suggestions, or support requests. Whether you're a donor, volunteer, or organization, we are here to help you.",
+    "formTitle": "Contact Us",
+    "username": "Username",
+    "usernamePlaceholder": "Enter your name here",
+    "subject": "Message type",
+    "email": "Email",
+    "message": "Message",
+    "messagePlaceholder": "Write your message here...",
+    "send": "Send Message",
+    "infoTitle": "Contact Information",
+    "phone": "Phone",
+    "location": "Address",
+    "hours": "Working Hours",
+    "title-ourBranches": "Our Branches",
+    "decrption-ourBranches": "Reach us through the nearest branch — we are always close to serve the community."
+  },
+
+  "footer": {
+    "title": "About Nabdah Khair",
+    "decrption": "Nabdah Khair is a platform that aims to facilitate donations, track humanitarian cases, and support charitable organizations in a secure and transparent manner. Our goal is to make giving accessible to everyone.",
+    "btn1": "Read More",
+    "title2": "Quick Links",
+    "link1": "Home page",
+    "link2": "About Us",
+    "link3": "Organizations",
+    "link4": "Campaigns & Services",
+    "link5": "Humanitarian Cases",
+    "btn2": "View All",
+    "title3": "Our Services & Campaigns",
+    "link6": "Child Protection & Treatment",
+    "link7": "Education Protection for Orphans",
+    "link8": "Elderly Care",
+    "link9": "Healthcare Protection",
+    "btn3": "View All Campaigns",
+    "title4": "Contact Us",
+    "btn4": "Contact Form"
+  }
+}

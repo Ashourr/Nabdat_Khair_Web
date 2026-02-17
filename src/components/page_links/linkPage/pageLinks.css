@@ -1,0 +1,109 @@
+.pagelink {
+  padding: 70px 0px;
+  background-color: var(--colorwhite);
+}
+.pagelink .back-btn {
+  background: none;
+  border: none;
+  color: black;
+  margin: 30px 0 50px;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.4s;
+}
+.pagelink .back {
+  margin-top: 5px !important;
+}
+.pagelink .back-btn:hover {
+  color: var(--primary);
+}
+.pagelink .link-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  padding: 10px 5px;
+  margin-bottom: 25px;
+  border: 5px solid var(--primary);
+  border-radius: 15px;
+  background-color: var(--colorwhite);
+  transition: 0.3s;
+}
+.pagelink .link-box .icon {
+  background: linear-gradient(135deg, #01affb 0%, #092749 100%);
+  border-radius: 50%;
+  padding: 20px 18px;
+  margin: 20px;
+  border: 5px solid var(--primary);
+  transition: 0.5s !important;
+}
+.pagelink .link-box:hover .icon {
+  background: linear-gradient(135deg, transparent 0%, transparent 100%);
+  box-shadow: 0 5px 15px rgba(27, 139, 192, 0.5);
+}
+.pagelink .link-box .icon .i {
+  font-size: 50px;
+  color: var(--colorwhite);
+  transition: 0.5s;
+}
+.pagelink .link-box:hover .i {
+  color: var(--primary);
+}
+.pagelink .link-box h4 {
+  font-size: 18px;
+  font-weight: 800;
+}
+.pagelink .link-box p {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+.pagelink .link-box a {
+  text-decoration: none;
+  padding: 5px 10px;
+  background: var(--primary);
+  color: var(--colorwhite);
+  border-radius: 10px;
+  margin-bottom: 5px;
+  display: block;
+  font-weight: 600;
+  font-size: 17px;
+  border: 3px solid var(--primary);
+}
+.pagelink .link-box a:hover {
+  background: transparent;
+  color: var(--primary);
+  transition: 0.5s;
+}
+
+@media (max-width: 500px) {
+  .pages-links .page-content .pages-links-content h2 {
+    font-size: 25px;
+  }
+  .pages-links .page-content .pages-links-content p {
+    font-size: 14px;
+  }
+}
+[data-theme="dark"] {
+  .pagelink {
+    background-color: #080808 !important;
+  }
+  .pagelink .back-btn {
+    color: white;
+  }
+  .pagelink .back-btn:hover {
+    color: var(--primary);
+  }
+  .pagelink .link-box p {
+    color: var(--colorwhite);
+  }
+  .pagelink .link-box h4 {
+    color: white;
+  }
+  .pagelink .link-box {
+    background-color: #181818;
+  }
+}

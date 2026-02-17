@@ -1,0 +1,75 @@
+.footer {
+  background: #000b1a;
+  color: white;
+  padding: 50px 0 0;
+}
+.footer h4 {
+  color: #1b8bc0;
+  font-size: 25px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+.footer h4.en{
+  font-size: 18px;
+}
+.footer .all {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  color: #1b8bc0;
+  width: fit-content;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.4s;
+}
+.footer .all .i {
+  transform: rotate(-45deg);
+  transition: 0.4s;
+}
+.footer .all:hover {
+  /* background: #1b8bc0; */
+  color: white;
+}
+.footer .all:hover .i {
+  transform: rotate(0deg);
+}
+.footer a {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    margin-bottom: 10px;
+    /* font-size: 14px; */
+    transition: 0.4s;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.footer a:hover{
+    color: #1b8bc0;
+}
+.footer-bottom {
+  width: 100%;
+  /* background: #0f1f2f; */
+  padding: 20px 10px;
+  text-align: center;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom .copy {
+  margin: 0;
+  color: #cfd8dc;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.footer-bottom .copy span {
+  color: #1b8bc0;
+  font-weight: 600;
+}
+
+
+[data-theme="dark"] .footer {
+  background: #0a0a0a;
+}

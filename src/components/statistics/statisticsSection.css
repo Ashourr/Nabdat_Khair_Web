@@ -1,0 +1,223 @@
+.Statistic {
+  background-color: white;
+  color: black;
+  padding: 50px 85px;
+  border-radius: 50px 50px 0 0;
+  margin-top: -57px;
+  position: relative;
+  width: 100%;
+  z-index: 3;
+}
+@media (max-width: 1100px) {
+  .Statistic {
+    background-color: white;
+    /* color: black; */
+    padding: 50px 25px;
+  }
+}
+.Statistic-section .img-bg {
+  /* background: url("../../../public/images/asset\ 13.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  position: relative;
+  height: 60vh;
+  width: 100%;
+  /* position: relative; */
+}
+.Statistic-section .img-bg.ar::before {
+  background: linear-gradient(-90deg, #000000d9, #0000);
+  content: "";
+  height: 88%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.Statistic-section .img-bg.en::before {
+  background: linear-gradient(90deg, #000000d9, #0000);
+  content: "";
+  height: 85%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.Statistic-section .img-bg .content {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 100px 100px 0;
+  z-index: 2;
+  position: absolute;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.Statistic-section .img-bg .content p {
+  max-width: 300px;
+}
+.Statistic .boxs {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+}
+.Statistic .boxs2 {
+  display: flex;
+  gap: 25px;
+}
+.Statistic .boxs .box {
+  margin-bottom: 50px;
+}
+.Statistic .boxs2 .box {
+  margin-bottom: 30px;
+}
+.Statistic .boxs .box .box-title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.Statistic .boxs .box .icon {
+  background-color: #e3e3e3;
+  border-radius: 10px;
+}
+.Statistic .boxs .box .icon .i {
+  padding: 10px 7px;
+  font-size: 27px;
+  color: #2a446c;
+  transform: rotate(45deg);
+  transition: 0.4s;
+}
+.Statistic .boxs .box .icon .i.en {
+  transform: rotate(135deg);
+  transition: 0.4s;
+}
+.Statistic .boxs .box:hover .i {
+  transform: rotate(0deg);
+}
+.Statistic .boxs .box:hover .i.en {
+  transform: rotate(180deg);
+}
+.Statistic .boxs .box h5 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.Statistic .boxs .box p {
+  font-size: 14px;
+  max-width: 250px;
+}
+
+.Statistic .boxs2 .box {
+  padding: 20px;
+  border-radius: 15px;
+  width: 100%;
+}
+.Statistic .boxs2 .box.box-1 {
+  background-color: #e3e3e3;
+  color: black;
+}
+.Statistic .boxs2 .box.box-2 {
+  background-color: #2a446c;
+  color: white;
+}
+
+.Statistic .boxs2 .box p {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.Statistic .boxs2 .box h4 {
+  font-size: 18px;
+  font-weight: 800;
+}
+.Statistic .boxs2 .box h5 {
+  font-size: 15px;
+}
+@media (max-width: 991px) {
+  .Statistic-section .img-bg .content {
+    padding: 100px 50px 0;
+  }
+  .Statistic .boxs .box h5 {
+    font-size: 18px;
+  }
+  .Statistic .boxs .box p {
+    font-size: 12px;
+  }
+  .Statistic .boxs2 .box p {
+    font-size: 30px;
+  }
+  .Statistic .boxs2 .box h4 {
+    font-size: 16px;
+  }
+  .Statistic .boxs2 .box h5 {
+    font-size: 13px;
+  }
+}
+@media (max-width: 767px) {
+  .Statistic .boxs {
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  .Statistic .boxs2 {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+  }
+  .Statistic .boxs .box {
+    margin-bottom: 20px;
+  }
+  .Statistic .boxs2 .box {
+    margin-bottom: 30px;
+    max-width: 260px;
+  }
+}
+@media (max-width: 500px) {
+  .Statistic .boxs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  .Statistic .boxs2 {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  .Statistic .boxs2 .box p {
+    font-size: 25px;
+  }
+  .Statistic .boxs2 .box h4 {
+    font-size: 14px;
+  }
+  .Statistic .boxs2 .box h5 {
+    font-size: 12px;
+  }
+  .Statistic {
+    background-color: white;
+    color: black;
+    padding: 50px 15px;
+    border-radius: 50px 50px 0 0;
+    margin-top: -57px;
+    position: relative;
+    width: 100%;
+    z-index: 3;
+  }
+}
+
+[data-theme="dark"] {
+  .Statistic {
+    background-color: #080808;
+    color: white;
+  }
+  .Statistic .boxs .box .icon {
+    background-color: var(--primary2);
+  }
+  .Statistic .boxs .box .icon .i {
+    color: white;
+  }
+}

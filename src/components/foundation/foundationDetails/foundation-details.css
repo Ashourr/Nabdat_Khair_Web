@@ -1,0 +1,7 @@
+.foundation-details{
+    background-color: white;
+}
+
+[data-theme="dark"] .foundation-details{
+    background-color: #060606;
+}

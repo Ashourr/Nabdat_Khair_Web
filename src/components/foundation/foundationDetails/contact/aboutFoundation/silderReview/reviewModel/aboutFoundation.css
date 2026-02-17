@@ -1,0 +1,227 @@
+.aboutFoundation {
+  padding: 20px 0 50px;
+  color: black;
+}
+.aboutFoundation h2 {
+  font-size: 30px;
+  font-weight: 600;
+  color: #0d6efd;
+}
+.aboutFoundation .title {
+  margin-bottom: 50px;
+}
+.aboutFoundation p {
+  color: #161616;
+  max-width: 500px;
+  /* margin-bottom: 50px; */
+}
+.aboutFoundation .Timeline {
+  margin-bottom: 50px;
+}
+.aboutFoundation h3 {
+  font-size: 25px;
+  font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 20px;
+}
+.aboutFoundation .Timeline p {
+  color: #161616;
+  margin-bottom: 20px;
+}
+.aboutFoundation .Timeline div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+.aboutFoundation .Timeline div .i {
+  font-size: 25px;
+  color: #0d6efd;
+}
+.aboutFoundation .Timeline div h6 {
+  color: #161616;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.aboutFoundation .row {
+  display: flex;
+}
+
+.aboutFoundation .col-md-4 {
+  display: flex;
+}
+
+.aboutFoundation .vision-itme {
+  background: #dddddd;
+  padding: 20px 10px 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+
+  flex: 1; /* يخليهم نفس الطول */
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutFoundation .vision-itme h5 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #2a446c;
+}
+.aboutFoundation .vision-itme p {
+  color: #161616;
+}
+.aboutFoundation .title-team {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.aboutFoundation .team-itme {
+  background-image: url("/images/PicsArt_12-29-02.05.43.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  border-radius: 10px;
+  min-height: 300px;
+  /* m: 20px; */
+  flex: 1;
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.aboutFoundation .team-itme::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: transform 0.4s ease;
+  z-index: 0;
+}
+.aboutFoundation .team-itme:hover::before {
+  transform: scale(1.2);
+}
+.aboutFoundation .team-itme > * {
+  position: relative;
+  z-index: 1;
+}
+
+.aboutFoundation .team-itme .contact {
+  position: absolute;
+  bottom: 0px;
+  background: #ffffff;
+  padding: 10px;
+  max-width: 100%;
+  margin: 20px;
+  border-radius: 10px;
+}
+.aboutFoundation .team-itme .contact h5 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0d6efd;
+}
+.aboutFoundation .team-itme .contact h6 {
+  font-size: 16px;
+}
+
+.aboutFoundation .accordion .accordion-item {
+  margin-bottom: 20px;
+  position: relative;
+  border-radius: 10px;
+  max-width: 600px;
+
+  /* overflow: hidden; */
+  border: 2px solid #c5c5c5;
+}
+.aboutFoundation .accordion-button::after {
+  display: none;
+}
+.aboutFoundation .accordion-item .icon-button.ar {
+  position: absolute;
+  left: -22px;
+  top: -3px;
+  font-size: 34px;
+  z-index: 8;
+  color: #ffffff;
+  background: #2a446c;
+  border: 2px solid #2a446c;
+  padding: 10px 5px;
+  border-radius: 50px;
+  transform: rotate(90deg);
+  transition: 0.4s;
+}
+.aboutFoundation .accordion-item .icon-button.en {
+  position: absolute;
+  right: -22px;
+  top: -3px;
+  font-size: 34px;
+  z-index: 99;
+  color: #ffffff;
+  background: #2a446c;
+  border: 2px solid #2a446c;
+  padding: 10px 5px;
+  border-radius: 50px;
+  transform: rotate(270deg);
+  transition: 0.4s;
+}
+
+.aboutFoundation .accordion-button:focus {
+  box-shadow: none !important;
+}
+.aboutFoundation .accordion-button:not(.collapsed) {
+  background: #2a446c !important;
+  color: white;
+}
+.aboutFoundation .accordion-button:not(.collapsed) .icon-button {
+  color: #2a446c;
+  background: white;
+  transform: rotate(180deg);
+}
+.aboutFoundation .accordion h2 {
+  background-color: black;
+  color: white !important;
+  border-radius: 10px;
+  /* border: 2px solid; */
+}
+.accordion-item:first-of-type > .accordion-header .accordion-button,
+.accordion-button {
+  border-radius: 10px !important;
+}
+
+[data-theme="dark"] {
+  .aboutFoundation p,
+  .aboutFoundation .Timeline div h6 {
+    color: white;
+  }
+  .aboutFoundation .vision-itme {
+    background: #181818;
+  }
+  .aboutFoundation .vision-itme h5 {
+    color: #0049b9;
+  }
+  .aboutFoundation .accordion .accordion-item {
+    background: #212121;
+    color: white;
+  }
+  .accordion-item:first-of-type > .accordion-header .accordion-button,
+  .accordion-button {
+    background: #212121;
+    color: white;
+  }
+  .aboutFoundation .accordion-button:not(.collapsed) {
+    background: #2a446c;
+    color: white;
+  }
+}

@@ -1,0 +1,84 @@
+.sitebar-foundation {
+  height: 100%;
+}
+.sitebar-foundation .contact-sitebar {
+  margin: 100px 0 150px;
+  position: sticky;
+  top: 100px;
+}
+.sitebar-foundation .contact-sitebar .shara,
+.sitebar-foundation .contact-sitebar .Authority {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px #838383;
+  border-radius: 10px;
+}
+
+.sitebar-foundation .contact-sitebar .shara .btn-1,
+.sitebar-foundation .contact-sitebar .shara .btn-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sitebar-foundation .contact-sitebar .shara .btn-1 .shara {
+  width: 100%;
+  text-align: center;
+  background: rgb(13 110 253);
+  border: 2px solid rgb(13 110 253);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.sitebar-foundation .contact-sitebar .shara .btn-1 .shara:hover {
+  background: transparent;
+  color: rgb(13 110 253);
+}
+.sitebar-foundation .contact-sitebar .shara .btn-2 .donate {
+  width: 100%;
+  text-align: center;
+  background: transparent;
+  border: 2px solid rgb(13 110 253);
+  padding: 10px;
+  border-radius: 10px;
+  /* margin-bottom: 10px; */
+  color: rgb(13 110 253);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.sitebar-foundation .contact-sitebar .shara .btn-2 .donate:hover {
+  background: rgb(13 110 253);
+  color: white;
+}
+
+.sitebar-foundation .contact-sitebar .Authority h6 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0d6efd;
+  line-height: 1.4;
+  background: #f3f3f3;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.sitebar-foundation .contact-sitebar .Authority h6 span {
+  color: black;
+  font-size: 18px;
+}
+
+@media (max-width: 991px) {
+  .sitebar-foundation .contact-sitebar {
+    margin: 0;
+  }
+}
+
+[data-theme="dark"] {
+  .sitebar-foundation .contact-sitebar .shara,
+  .sitebar-foundation .contact-sitebar .Authority {
+    background: #080808;
+    box-shadow: 0px 0px 10px #0d6efd26;
+  }
+}

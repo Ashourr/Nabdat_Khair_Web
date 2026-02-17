@@ -1,0 +1,211 @@
+.faq-section {
+  padding: 70px 0;
+}
+.faq-section .title {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.faq-section .title h2 {
+  font-size: 40px;
+  font-weight: 600;
+  color: #2a446c;
+}
+.faq-section .title p {
+  max-width: 356px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.faq-section .back-btn {
+  background: none;
+  border: none;
+  color: black;
+  margin: 30px 0 50px;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.4s;
+}
+.faq-section .back {
+  margin-top: 5px !important;
+}
+.faq-section .back-btn:hover {
+  color: var(--primary);
+}
+.faq-section .image-section {
+  position: sticky;
+  margin-bottom: 50px;
+  top: 120px;
+}
+.faq-section .image.ar {
+  width: 110%;
+  left: 90px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  transform: rotate(-5deg);
+}
+.faq-section .image.en {
+  width: 110%;
+  right: 90px;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 20px;
+  transform: rotate(-5deg);
+}
+.faq-section .image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #2a446c78;
+  border-radius: 20px;
+}
+.faq-section .image h5.ar {
+  color: white;
+  z-index: 3;
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  max-width: 380px;
+  font-size: 27px;
+  transform: rotate(5deg);
+}
+.faq-section .image h5.en {
+  color: white;
+  z-index: 3;
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  max-width: 380px;
+  font-size: 27px;
+  transform: rotate(5deg);
+}
+.faq-section .fqas {
+  position: relative;
+  z-index: 9;
+}
+.faq-section .accordion .accordion-item {
+  margin-bottom: 20px;
+  position: relative;
+  border-radius: 10px;
+  /* overflow: hidden; */
+  border: 2px solid #c5c5c5;
+}
+.faq-section .accordion-button::after {
+  display: none;
+}
+.faq-section .accordion-item .icon-button.ar {
+  position: absolute;
+  left: -22px;
+  top: -3px;
+  font-size: 34px;
+  z-index: 5;
+  color: #ffffff;
+  background: #2a446c;
+  border: 2px solid #2a446c;
+  padding: 10px 5px;
+  border-radius: 50px;
+  transform: rotate(90deg);
+  transition: 0.4s;
+}
+.faq-section .accordion-item .icon-button.en {
+  position: absolute;
+  right: -22px;
+  top: -3px;
+  font-size: 34px;
+  z-index: 99;
+  color: #ffffff;
+  background: #2a446c;
+  border: 2px solid #2a446c;
+  padding: 10px 5px;
+  border-radius: 50px;
+  transform: rotate(270deg);
+  transition: 0.4s;
+}
+
+.faq-section .accordion-button:focus {
+  box-shadow: none !important;
+}
+.faq-section .accordion-button:not(.collapsed) {
+  background: #2a446c !important;
+  color: white;
+}
+.faq-section .accordion-button:not(.collapsed) .icon-button {
+  color: #2a446c;
+  background: white;
+  transform: rotate(180deg);
+}
+.faq-section .accordion h2 {
+  background-color: black;
+  color: white !important;
+  border-radius: 10px;
+  /* border: 2px solid; */
+}
+.accordion-item:first-of-type > .accordion-header .accordion-button,
+.accordion-button {
+  border-radius: 10px !important;
+}
+
+@media (max-width: 991px) {
+  .faq-section .image.ar {
+    width: 100%;
+    left: 0px;
+    height: 400px;
+    border-radius: 20px;
+    transform: rotate(0deg);
+  }
+  .faq-section .image.en {
+    width: 100%;
+    right: 0px;
+    height: 400px;
+    border-radius: 20px;
+    transform: rotate(0deg);
+  }
+  .faq-section .image h5.ar,
+  .faq-section .image h5.en {
+    font-size: 20px;
+    padding: 10px;
+    transform: rotate(0deg);
+  }
+  @media (max-width: 991px) {
+    .faq-section .row {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .faq-section {
+    background: #040404;
+    color: white;
+  }
+  .faq-section .back-btn {
+    color: white;
+  }
+  .faq-section .back-btn:hover {
+    color: var(--primary);
+  }
+  .faq-section .accordion .accordion-item {
+    background: #212121;
+    color: white;
+  }
+  .accordion-item:first-of-type > .accordion-header .accordion-button,
+  .accordion-button {
+    background: #212121;
+    color: white;
+  }
+  .faq-section .accordion-button:not(.collapsed) {
+    background: #2a446c;
+    color: white;
+  }
+}

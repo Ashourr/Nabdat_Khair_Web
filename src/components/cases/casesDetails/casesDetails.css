@@ -1,0 +1,7 @@
+.foundation-details {
+  padding-top: 120px;
+  background-color: #ededed;
+}
+[data-theme="dark"] .foundation-details {
+  background-color: rgb(12 12 12);
+}

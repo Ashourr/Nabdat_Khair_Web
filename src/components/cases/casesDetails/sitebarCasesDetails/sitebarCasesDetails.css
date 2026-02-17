@@ -1,0 +1,203 @@
+.sitebar-cases-details .content-menu {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  margin-bottom: 35px;
+}
+.sitebar-cases-details .progress-bg {
+  width: 100%;
+  height: 12px;
+  background: #f3f4f6; /* لون أفتح قليلاً للتباين */
+  border-radius: 20px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  position: relative; /* لإضافة طبقات داخلية */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.sitebar-cases-details .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1b8bc0, #01affb);
+  border-radius: 20px;
+  transition: width 2s cubic-bezier(0.4, 0, 0.2, 1); /* أنيماشين ناعم جداً */
+  position: relative;
+}
+
+/* إضافة تأثير لمعان متحرك داخل البار */
+.sitebar-cases-details .progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: progress-shimmer 2s infinite;
+}
+
+@keyframes progress-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.sitebar-cases-details .money {
+  display: flex;
+  margin: 20px 0;
+  justify-content: space-between;
+}
+.sitebar-cases-details .money .money-1 {
+  text-align: start;
+}
+.sitebar-cases-details .money .money-2 {
+  text-align: end;
+}
+.sitebar-cases-details .money p {
+  margin: 0;
+  font-size: 15px;
+  color: #a1a1a1;
+}
+.sitebar-cases-details .money h5 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.sitebar-cases-details .Status-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 30px;
+  background: #dfdfdf;
+  border-radius: 10px;
+}
+.sitebar-cases-details .Status-data .Status-data-1 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.sitebar-cases-details .Status-data .Status-data-1 .i {
+  font-size: 25px;
+  color: #ffa500;
+}
+.sitebar-cases-details .Status-data p {
+  margin: 0;
+  font-size: 12px;
+  color: #3d3d3d;
+}
+.sitebar-cases-details .Status-data h6 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+.sitebar-cases-details .shara .btn-1,
+.sitebar-cases-details .shara .btn-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sitebar-cases-details .shara .btn-1 .shara {
+  width: 100%;
+  text-align: center;
+  background: rgb(13 110 253);
+  border: 2px solid rgb(13 110 253);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.sitebar-cases-details .shara .btn-1 .shara:hover {
+  background: transparent;
+  color: rgb(13 110 253);
+}
+.sitebar-cases-details .shara .btn-2 .donate {
+  width: 100%;
+  text-align: center;
+  background: transparent;
+  border: 2px solid rgb(13 110 253);
+  padding: 10px;
+  border-radius: 10px;
+  /* margin-bottom: 10px; */
+  color: rgb(13 110 253);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.sitebar-cases-details .shara .btn-2 .donate:hover {
+  background: rgb(13 110 253);
+  color: white;
+}
+
+.sitebar-cases-details .Donors {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.sitebar-cases-details .Donors .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.sitebar-cases-details .Donors .title h6 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+  color: #0d6efd;
+}
+.sitebar-cases-details .Donors .title p {
+  margin: 0;
+  font-size: 20px;
+  color: #a1a1a1;
+}
+
+.sitebar-cases-details .Donors .itme {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.sitebar-cases-details .Donors .itme .info {
+  display: flex;
+  gap: 10px;
+}
+.sitebar-cases-details .Donors .itme .info h5 {
+  font-size: 15px;
+  margin: 0;
+  font-weight: 700;
+}
+.sitebar-cases-details .Donors .itme .info p {
+  margin: 0;
+  font-size: 15px;
+  color: #737373;
+}
+.sitebar-cases-details .Donors .itme h6 {
+  /* font-size: 15px; */
+  margin: 0;
+  font-weight: 700;
+  font-size: 20px;
+  color: #0d6efd;
+}
+
+[data-theme="dark"] {
+  .sitebar-cases-details .content-menu,
+  .sitebar-cases-details .Donors {
+    background: #181818;
+    color: white;
+  }
+  .sitebar-cases-details .Status-data {
+    background: #000000;
+  }
+  .sitebar-cases-details .Status-data p {
+    color: #fbfbfb;
+  }
+}
