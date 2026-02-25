@@ -1,0 +1,156 @@
+.calculateZakat {
+  padding: 100px 0;
+  background-color: #ededed;
+}
+.calculateZakat .title {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0 0;
+}
+.calculateZakat .title h2 {
+  font-size: 25px;
+  color: #2a446c;
+  font-weight: 700;
+}
+.calculateZakat .title p {
+  max-width: 400px;
+  color: #595959;
+}
+.calculateZakat h3 {
+  text-align: center;
+  margin: 50px 0;
+  color: #2a446c;
+}
+.calculateZakat .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.calculateZakat .condition {
+  display: flex;
+}
+.calculateZakat .item-condition {
+  box-shadow: 0px 0px 10px #b1b1b1;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  gap: 5px;
+}
+.calculateZakat .item-condition .i {
+  font-size: 60px;
+  /* margin-bottom: 25px 0px; */
+  color: #2a446c;
+  background: #1b8bc029;
+  padding: 20px;
+  border-radius: 50%;
+}
+.calculateZakat .item-condition h5 {
+  font-size: 25px;
+  font-weight: 600;
+  color: #1b8bc0;
+}
+.calculateZakat .item-condition p {
+  font-size: 15px;
+  margin: 0;
+  color: #161616;
+}
+.calculateZakat .zakat-grid {
+  display: grid;
+  padding: 60px 20px;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+.calculateZakat .card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+.calculateZakat .card h4 {
+  margin-bottom: 15px;
+  color: #1d3557;
+}
+.calculateZakat .input-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.calculateZakat .input-group label {
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.calculateZakat .input-group input {
+  padding: 10px;
+  border-radius: 10px !important;
+  background-color: #ededed;
+  color: black;
+  border: 1px solid #ccc;
+  transition: 0.3s;
+}
+.calculateZakat .input-group input:focus {
+  border-color: #1d3557;
+  outline: none;
+}
+.calculateZakat .zakat-result {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  margin-bottom: 20px;
+}
+.calculateZakat .zakat-result h3 {
+  margin: 0;
+  margin-bottom: 20px;
+  color: #1d3557;
+}
+.calculateZakat .result-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.calculateZakat .total {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #1d3557;
+}
+.calculateZakat .donate-btn {
+  width: 100%;
+  padding: 12px;
+  display: block;
+  border: none;
+  border-radius: 8px;
+  border: 2px solid #1d3557;
+  background: #1d3557;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+}
+.calculateZakat .donate-btn:hover {
+  color: #16324f;
+  background: transparent;
+}
+@media (max-width: 992px) {
+  .calculateZakat .zakat-grid {
+    grid-template-columns: 1fr;
+  }
+}

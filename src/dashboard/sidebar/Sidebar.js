@@ -4,46 +4,167 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 import { usePathname } from "../../../i18n/navigation";
 import "./sidebar.css";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHouse,
+  faBell,
+  faHandHoldingDollar,
+  faUser,
+  faGear,
+  faClock,
+  faGlobe,
+  faListCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import { faWpforms } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
+import imgNav from "../../../public/images/logo.png";
 
-function SidebarContent({ isPagesOpen, onPagesToggle, closeAll }) {
+function SidebarContent({ closeAll }) {
   const locale = useLocale();
   const pathname = usePathname();
 
-  const menuItems = [
-    {
-      href: `/${locale}/dashboard`,
-      hr: `/dashboard`,
-      label: locale === "en" ? "Home" : "الرئيسية",
-      icon: <FontAwesomeIcon icon={faHouse} className="menu-icon" />,
-    },
-    {
-      href: `/${locale}/dashboard/profile`,
-      hr: `/dashboard/profile`,
-      label: locale === "en" ? "Profile" : "الملف الشخصي",
-      icon: <FontAwesomeIcon icon={faWpforms} className="menu-icon" />,
-    },
-  ];
+  // غير القيمة دي حسب اليوزر الحقيقي (user | volunteer | organization)
+  const role = "volunteer";
 
-  const pagesItems = [
-    { href: `/${locale}/login`, label: "Login" },
-    { href: `/${locale}/create-account`, label: "Create account" },
-    { href: `/${locale}/forgot-password`, label: "Forgot password" },
-    { href: `/${locale}/404`, label: "404" },
-    { href: `/${locale}/blank`, label: "Blank" },
-  ];
+  const menus = {
+    user: [
+      {
+        href: `/${locale}/dashboard/user`,
+        label: locale === "en" ? "Home" : "الرئيسية",
+        basePath: "/dashboard/user",
+        icon: faHouse,
+      },
+      {
+        href: `/${locale}/dashboard/user/donations`,
+        label: locale === "en" ? "Donations" : "التبرعات",
+        basePath: "/dashboard/user/donations",
+        icon: faHandHoldingDollar,
+      },
+      {
+        href: `/${locale}/dashboard/user/notifications`,
+        label: locale === "en" ? "Notifications" : "الإشعارات",
+        basePath: "/dashboard/user/notifications",
+        icon: faBell,
+      },
+      {
+        href: `/${locale}/dashboard/user/profile`,
+        label: locale === "en" ? "Profile" : "الملف الشخصي",
+        basePath: "/dashboard/user/profile",
+        icon: faUser,
+      },
+      {
+        href: `/${locale}/dashboard/user/settingsPage`,
+        label: locale === "en" ? "Settings" : "الإعدادات",
+        basePath: "/dashboard/user/settingsPage",
+        icon: faGear,
+      },
+    ],
+
+    volunteer: [
+      {
+        href: `/${locale}/dashboard/volunteer`,
+        label: locale === "en" ? "Home" : "الرئيسية",
+        basePath: "/dashboard/volunteer", // المسار الأساسي
+        icon: faHouse,
+      },
+      {
+        href: `/${locale}/dashboard/volunteer/opportunities`,
+        label: locale === "en" ? "Opportunities" : "فرص التطوع",
+        basePath: "/dashboard/volunteer/opportunities",
+        icon: faGlobe,
+      },
+      {
+        href: `/${locale}/dashboard/volunteer/myTasks`,
+        label: locale === "en" ? "Tasks" : "المهام",
+        basePath: "/dashboard/volunteer/myTasks",
+        icon: faListCheck,
+      },
+      {
+        href: `/${locale}/dashboard/volunteer/volunteerHours`,
+        label: locale === "en" ? "Volunteer Hours" : "ساعات التطوع",
+        basePath: "/dashboard/volunteer/volunteerHours",
+        icon: faClock,
+      },
+      {
+        href: `/${locale}/dashboard/volunteer/notifications`,
+        label: locale === "en" ? "Notifications" : "الإشعارات",
+        basePath: "/dashboard/volunteer/notifications",
+        icon: faBell,
+      },
+      {
+        href: `/${locale}/dashboard/volunteer/volunteerRatings`,
+        label: locale === "en" ? "Volunteer Ratings" : "تقييم التطوع",
+        basePath: "/dashboard/volunteer/volunteerRatings",
+        icon: faBell,
+      },
+      {
+        href: `/${locale}/dashboard/volunteer/profile`,
+        label: locale === "en" ? "Profile" : "الملف الشخصي",
+        basePath: "/dashboard/volunteer/profile",
+        icon: faUser,
+      },
+      {
+        href: `/${locale}/dashboard/volunteer/settingsPage`,
+        label: locale === "en" ? "Settings" : "الإعدادات",
+        basePath: "/dashboard/volunteer/settingsPage",
+        icon: faGear,
+      },
+    ],
+
+    organization: [
+      {
+        href: `/${locale}/dashboard/organization`,
+        label: locale === "en" ? "Organization Home" : "الرئيسية للمؤسسة",
+        basePath: "/dashboard/organization",
+        icon: faHouse,
+      },
+      {
+        href: `/${locale}/dashboard/organization/manage`,
+        label: locale === "en" ? "Manage Projects" : "إدارة المشاريع",
+        basePath: "/dashboard/organization/manage",
+        icon: faWpforms,
+      },
+    ],
+  };
+
+  const menuItems = menus[role] || [];
 
   return (
     <div className="sidebar-content">
-      <Link href={`/${locale}`} className="logo" onClick={closeAll}>
-        Project Logo
+      <Link
+        href={`/${locale}`}
+        className="logo"
+        onClick={closeAll}
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        <div
+          className="img"
+          style={{ position: "relative", width: "100%", height: "75px" }}
+        >
+          <Image
+            src={imgNav}
+            alt="logo-img-website"
+            quality={100}
+            fill
+            priority
+            placeholder="blur"
+          />
+        </div>
       </Link>
-
       <ul className="menu-list">
         {menuItems.map((item, index) => {
-          const isActive = pathname === item.hr || pathname === item.href;
+          /**
+           * 🛠️ الحل هنا:
+           * إذا كان المسار هو "الرئيسية" (المسار القصير)، لازم يطابق pathname بالظبط.
+           * غير كدة، نستخدم startsWith عشان الصفحات الفرعية تنور الأب بتاعها.
+           */
+          const isActive =
+            item.basePath === "/dashboard/user" ||
+            item.basePath === "/dashboard/volunteer" ||
+            item.basePath === "/dashboard/organization"
+              ? pathname === item.basePath
+              : pathname.startsWith(item.basePath);
+
           return (
             <li key={index}>
               <Link
@@ -51,126 +172,58 @@ function SidebarContent({ isPagesOpen, onPagesToggle, closeAll }) {
                 className={`menu-link ${isActive ? "active" : ""}`}
                 onClick={closeAll}
               >
-                {item.icon}
+                <FontAwesomeIcon icon={item.icon} className="menu-icon" />
                 <span className="menu-label">{item.label}</span>
               </Link>
             </li>
           );
         })}
-
-        {/* Pages Section */}
-        {/* <li className="relative">
-          <button
-            className="menu-link submenu-toggle"
-            onClick={(e) => {
-              e.stopPropagation();
-              onPagesToggle();
-            }}
-            aria-expanded={isPagesOpen}
-          >
-            <span className="inline-flex items-center">
-              <svg
-                className="menu-icon"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 5h16M4 12h16M4 19h16"
-                />
-              </svg>
-              <span className="menu-label">Pages</span>
-            </span>
-            <svg
-              className={`chevron ${isPagesOpen ? "rotate-180" : ""}`}
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0-01-1.414 0l-4-4a1 1 0-01-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-
-          <ul className={`submenu ${isPagesOpen ? "open" : ""}`}>
-            {pagesItems.map((page, index) => (
-              <li key={index} className="sub-li">
-                <Link href={page.href} className="sub-link" onClick={closeAll}>
-                  {page.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </li> */}
       </ul>
     </div>
   );
 }
 
 export default function Sidebar({ isMobileOpen = false, onMobileToggle }) {
-  const [isPagesOpen, setIsPagesOpen] = useState(false);
   const sidebarRef = useRef(null);
   const locale = useLocale();
   const isRTL = locale === "ar";
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-        setIsPagesOpen(false);
+      if (
+        isMobileOpen &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target)
+      ) {
+        onMobileToggle(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [isMobileOpen, onMobileToggle]);
 
-  const handlePagesToggle = () => {
-    setIsPagesOpen((prev) => !prev);
+  const closeAll = () => {
+    if (window.innerWidth <= 768) onMobileToggle(false);
   };
-
-  const closeAll = () => setIsPagesOpen(false);
 
   return (
     <>
-      {/* Sidebar Desktop */}
-      <aside
-        className={`desktop-sidebar ${isRTL ? "rtl" : "ltr"}`}
-        aria-label="Desktop sidebar"
-        ref={sidebarRef}
-      >
-        <SidebarContent
-          isPagesOpen={isPagesOpen}
-          onPagesToggle={handlePagesToggle}
-          closeAll={closeAll}
-        />
+      <aside className={`desktop-sidebar ${isRTL ? "rtl" : "ltr"}`}>
+        <SidebarContent closeAll={() => {}} />
       </aside>
 
-      {/* الخلفية عند الفتح في الموبايل */}
       {isMobileOpen && (
         <div
           className="mobile-backdrop"
           onClick={() => onMobileToggle(false)}
-          aria-hidden="true"
         />
       )}
 
-      {/* Sidebar Mobile */}
       <aside
-        className={`mobile-sidebar ${isMobileOpen ? "open" : ""} ${
-          isRTL ? "rtl" : "ltr"
-        }`}
-        aria-label="Mobile sidebar"
         ref={sidebarRef}
+        className={`mobile-sidebar ${isMobileOpen ? "open" : ""} ${isRTL ? "rtl" : "ltr"}`}
       >
-        <SidebarContent
-          isPagesOpen={isPagesOpen}
-          onPagesToggle={handlePagesToggle}
-          closeAll={closeAll}
-        />
+        <SidebarContent closeAll={closeAll} />
       </aside>
     </>
   );

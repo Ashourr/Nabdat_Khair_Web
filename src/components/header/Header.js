@@ -32,10 +32,10 @@ export default function Header() {
               : "نبضة خير هي منصة شاملة تجمع بين المتبرعين، المؤسسات، والمتطوعين في مكان واحد لدعم الحالات الإنسانية وتغيير حياة آلاف الأسر بلمسة خير."}
           </p>
           <div className="header-buttons">
-            <Link href={"#"} className={`btn-1 ${locale}`}>
+            <Link href={`/${locale}/cases`} className={`btn-1 ${locale}`}>
               {t("btn1")}
             </Link>
-            <Link href={"#"} className={`btn-2 ${locale}`}>
+            <Link href={`/${locale}/calculate_zakat`} className={`btn-2 ${locale}`}>
               {t("btn2")}
             </Link>
           </div>

@@ -7,8 +7,22 @@ import { useLocale } from "next-intl";
 import toast from "react-hot-toast";
 import Select from "react-select";
 
+// قائمة المؤسسات
+const organizationsList = [
+  { id: 1, name: "مؤسسة الرسالة", field: "طبي" },
+  { id: 2, name: "جمعية الأورمان", field: "إغاثي" },
+  { id: 3, name: "مؤسسة بهية", field: "طبي" },
+  { id: 4, name: "مؤسسة مصر الخير", field: "تعليمي" },
+  { id: 5, name: "جمعية راعي مصر", field: "إغاثي" },
+  { id: 6, name: "بنك الطعام المصري", field: "إغاثي" },
+  { id: 7, name: "مؤسسة صناع الحياة", field: "تقني" },
+  { id: 8, name: "جمعية رسالة للأعمال الخيرية", field: "لوجستي" },
+  { id: 9, name: "مؤسسة مجدي يعقوب", field: "طبي" },
+  { id: 10, name: "الهلال الأحمر المصري", field: "إغاثي" },
+];
 export default function RegisterVolunteer() {
   const locale = useLocale();
+
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -18,26 +32,37 @@ export default function RegisterVolunteer() {
     address: "",
     password: "",
     confirmPassword: "",
-    volunteerType: "",
+    volunteerType: "", // نوع التطوع (عام، دائم، عادي)
     volunteerFields: [],
-    availability: "",
-    regions: "",
-    // idCard: null,
+    nationalId: "",
     avatar: null,
     idCardFront: null,
     idCardBack: null,
+    selectedOrganization: null, // المؤسسة المختارة
   });
 
   const [step, setStep] = useState(1);
   const [avatarPreview, setAvatarPreview] = useState(null);
-  // const [idCardPreview, setIdCardPreview] = useState(null);
-
   const [selectedVolunteerType, setSelectedVolunteerType] = useState(null);
-  const [selectedAvailability, setSelectedAvailability] = useState(null);
+  const [selectedOrganization, setSelectedOrganization] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
 
   const [idCardFrontPreview, setIdCardFrontPreview] = useState(null);
   const [idCardBackPreview, setIdCardBackPreview] = useState(null);
+
+  // تصفية المؤسسات حسب مجالات التطوع المختارة
+  const [filteredOrganizations, setFilteredOrganizations] = useState([]);
+
+  useEffect(() => {
+    if (formData.volunteerFields.length > 0) {
+      const filtered = organizationsList.filter((org) =>
+        formData.volunteerFields.includes(org.field),
+      );
+      setFilteredOrganizations(filtered);
+    } else {
+      setFilteredOrganizations(organizationsList);
+    }
+  }, [formData.volunteerFields]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,7 +91,8 @@ export default function RegisterVolunteer() {
     if (!file) return;
 
     setFormData((prev) => ({ ...prev, idCardFront: file }));
-    setIdCardFrontPreview(URL.createObjectURL(file));
+    const previewUrl = URL.createObjectURL(file);
+    setIdCardFrontPreview(previewUrl);
   };
 
   const handleIdBackChange = (e) => {
@@ -90,31 +116,90 @@ export default function RegisterVolunteer() {
     { value: "female", label: locale === "en" ? "Female" : "أنثى" },
   ];
 
+  // أنواع التطوع الرئيسية
   const volunteerTypeOptions = [
-    { value: "ميداني", label: "ميداني" },
-    { value: "إلكتروني", label: "إلكتروني" },
-    { value: "إداري", label: "إداري" },
+    {
+      value: "عام",
+      label: "عام (مع الكل)",
+      description: "يمكنك التطوع مع أي مؤسسة أو في أي مجال",
+    },
+    {
+      value: "دائم",
+      label: "دائم (تابع لمؤسسة)",
+      description: "متطوع دائم تابع لمؤسسة محددة",
+    },
+    {
+      value: "عادي",
+      label: "عادي (شغال مع الكل)",
+      description: "متطوع عادي يعمل مع الجميع",
+    },
   ];
 
-  const availabilityOptions = [
-    { value: "full", label: "دوام كامل" },
-    { value: "part", label: "جزئي" },
-    { value: "onDemand", label: "حسب الطلب" },
-  ];
+  // خيارات المؤسسات لـ Select
+  const organizationOptions = filteredOrganizations.map((org) => ({
+    value: org.id,
+    label: org.name,
+    field: org.field,
+  }));
 
   const nextStep = () => {
+    // if (step === 1) {
+    //   if (
+    //     !formData.fullName ||
+    //     !formData.email ||
+    //     !formData.phone ||
+    //     !formData.gender ||
+    //     !formData.address
+    //   ) {
+    //     toast.error(
+    //       locale === "en" ? "Please fill all fields" : "الرجاء ملء جميع الحقول",
+    //     );
+    //     return;
+    //   }
+    // }
+    // if (step === 2) {
+    //   if (!formData.volunteerType || formData.volunteerFields.length === 0) {
+    //     toast.error(
+    //       locale === "en"
+    //         ? "Please select volunteer type and fields"
+    //         : "الرجاء اختيار نوع ومجالات التطوع",
+    //     );
+    //     return;
+    //   }
+
+    //   if (formData.volunteerType === "دائم" && !formData.selectedOrganization) {
+    //     toast.error(
+    //       locale === "en"
+    //         ? "Please select an organization"
+    //         : "الرجاء اختيار مؤسسة",
+    //     );
+    //     return;
+    //   }
+    // }
     setStep((prev) => prev + 1);
   };
+
   const prevStep = () => setStep((prev) => prev - 1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       toast.error(
         locale === "en" ? "Passwords do not match" : "كلمات المرور غير متطابقة",
       );
       return;
     }
+
+    if (!formData.idCardFront || !formData.idCardBack) {
+      toast.error(
+        locale === "en"
+          ? "Please upload both sides of ID card"
+          : "الرجاء رفع وجهي البطاقة",
+      );
+      return;
+    }
+
     console.log("Form Data:", formData);
     toast.success(locale === "en" ? "Account created!" : "تم إنشاء الحساب!");
   };
@@ -137,7 +222,7 @@ export default function RegisterVolunteer() {
                 </div>
 
                 <form onSubmit={handleSubmit}>
-                  {/* Step 1 */}
+                  {/* Step 1 - المعلومات الأساسية */}
                   {step === 1 && (
                     <>
                       <div className="input-group">
@@ -147,6 +232,7 @@ export default function RegisterVolunteer() {
                           type="text"
                           onChange={handleChange}
                           placeholder="ادخل الاسم الكامل"
+                          value={formData.fullName}
                         />
                       </div>
 
@@ -157,6 +243,7 @@ export default function RegisterVolunteer() {
                           type="email"
                           onChange={handleChange}
                           placeholder="ادخل البريد الإلكتروني"
+                          value={formData.email}
                         />
                       </div>
 
@@ -167,6 +254,7 @@ export default function RegisterVolunteer() {
                           type="text"
                           onChange={handleChange}
                           placeholder="ادخل رقم الهاتف"
+                          value={formData.phone}
                         />
                       </div>
 
@@ -196,6 +284,7 @@ export default function RegisterVolunteer() {
                           type="text"
                           onChange={handleChange}
                           placeholder="ادخل العنوان"
+                          value={formData.address}
                         />
                       </div>
 
@@ -209,7 +298,7 @@ export default function RegisterVolunteer() {
                     </>
                   )}
 
-                  {/* Step 2 */}
+                  {/* Step 2 - بيانات التطوع مع المؤسسات */}
                   {step === 2 && (
                     <>
                       <label>نوع التطوع</label>
@@ -222,14 +311,32 @@ export default function RegisterVolunteer() {
                             setFormData((prev) => ({
                               ...prev,
                               volunteerType: option?.value || "",
+                              selectedOrganization: null, // إعادة تعيين المؤسسة عند تغيير النوع
                             }));
+                            setSelectedOrganization(null);
                           }}
                           options={volunteerTypeOptions}
-                          placeholder="نوع التطوع"
+                          placeholder="اختر نوع التطوع"
                           isClearable
                           classNamePrefix="my-select"
                         />
                       </div>
+
+                      {/* عرض وصف النوع المختار */}
+                      {selectedVolunteerType && (
+                        <div
+                          style={{
+                            padding: "10px",
+                            background: "#f0f9ff",
+                            borderRadius: "8px",
+                            marginBottom: "15px",
+                            color: "#0369a1",
+                            fontSize: "14px",
+                          }}
+                        >
+                          {selectedVolunteerType.description}
+                        </div>
+                      )}
 
                       <label>مجالات التطوع</label>
                       <div className="input-group">
@@ -239,7 +346,6 @@ export default function RegisterVolunteer() {
                               <label key={field} className="checkbox">
                                 <div>
                                   <input
-                                  // className="input"
                                     type="checkbox"
                                     value={field}
                                     onChange={(e) => {
@@ -270,33 +376,103 @@ export default function RegisterVolunteer() {
                         </div>
                       </div>
 
-                      <label>التفرغ</label>
-                      <div style={{ margin: "10px 0" }}>
-                        <Select
-                          instanceId="availability-select"
-                          value={selectedAvailability}
-                          onChange={(option) => {
-                            setSelectedAvailability(option);
-                            setFormData((prev) => ({
-                              ...prev,
-                              availability: option?.value || "",
-                            }));
-                          }}
-                          options={availabilityOptions}
-                          placeholder="اختر التفرغ"
-                          isClearable
-                          classNamePrefix="my-select"
-                        />
-                      </div>
+                      {/* اختيار المؤسسة - يظهر فقط إذا كان النوع "دائم" */}
+                      {formData.volunteerType === "دائم" && (
+                        <>
+                          <label
+                            style={{ marginTop: "20px", display: "block" }}
+                          >
+                            اختر المؤسسة
+                          </label>
+                          <div style={{ margin: "10px 0" }}>
+                            <Select
+                              instanceId="organization-select"
+                              value={selectedOrganization}
+                              onChange={(option) => {
+                                setSelectedOrganization(option);
+                                setFormData((prev) => ({
+                                  ...prev,
+                                  selectedOrganization: option
+                                    ? {
+                                        id: option.value,
+                                        name: option.label,
+                                        field: option.field,
+                                      }
+                                    : null,
+                                }));
+                              }}
+                              options={organizationOptions}
+                              placeholder="اختر المؤسسة"
+                              isClearable
+                              classNamePrefix="my-select"
+                              isDisabled={filteredOrganizations.length === 0}
+                            />
+                            {filteredOrganizations.length === 0 && (
+                              <p
+                                style={{
+                                  color: "#ef4444",
+                                  fontSize: "12px",
+                                  marginTop: "5px",
+                                }}
+                              >
+                                لا توجد مؤسسات في المجالات المختارة
+                              </p>
+                            )}
+                          </div>
+                        </>
+                      )}
 
-                      <div className="input-group">
-                        <label>المناطق المتاحة</label>
-                        <input
-                          name="regions"
-                          type="text"
-                          onChange={handleChange}
-                          placeholder="ادخل المناطق المتاحة"
-                        />
+                      {/* رسالة للمستخدمين العاديين */}
+                      {(formData.volunteerType === "عام" ||
+                        formData.volunteerType === "عادي") && (
+                        <div
+                          style={{
+                            padding: "15px",
+                            background: "#f3e8ff",
+                            borderRadius: "8px",
+                            marginTop: "20px",
+                            color: "#7c3aed",
+                            fontSize: "14px",
+                          }}
+                        >
+                          {formData.volunteerType === "عام"
+                            ? "🌟 ستظهر لك جميع الفرص التطوعية من جميع المؤسسات"
+                            : "🤝 يمكنك التطوع مع أي مؤسسة في أي وقت"}
+                        </div>
+                      )}
+
+                      <div
+                        className="input-group"
+                        style={{ marginTop: "20px" }}
+                      >
+                        <label>صورة شخصية (اختياري)</label>
+                        <div className="avatar-upload">
+                          <label htmlFor="avatarInput" className="avatar-label">
+                            {avatarPreview ? (
+                              <Image
+                                fill
+                                src={avatarPreview}
+                                alt="Avatar Preview"
+                                style={{
+                                  objectFit: "cover",
+                                  objectPosition: "center",
+                                }}
+                              />
+                            ) : (
+                              <span>+</span>
+                            )}
+                          </label>
+                          <input
+                            id="avatarInput"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleAvatarChange}
+                            hidden
+                          />
+                          <p className="avatar-text">
+                            إضافة صورة شخصية (اختياري)
+                          </p>
+                        </div>
                       </div>
 
                       <div className="button-group">
@@ -318,9 +494,21 @@ export default function RegisterVolunteer() {
                     </>
                   )}
 
-                  {/* Step 3 */}
+                  {/* Step 3 - الصور وكلمة المرور */}
                   {step === 3 && (
                     <>
+                      <div className="input-group">
+                        <label>الرقم القومي</label>
+                        <input
+                          name="nationalId"
+                          type="text"
+                          onChange={handleChange}
+                          placeholder="ادخل الرقم القومي"
+                          value={formData.nationalId}
+                          style={{ direction: "ltr" }}
+                        />
+                      </div>
+
                       <label>صورة البطاقة الشخصية</label>
                       <div className="input-group" style={{ gap: "20px" }}>
                         {/* Front ID */}
@@ -375,37 +563,6 @@ export default function RegisterVolunteer() {
                             hidden
                           />
                           <p className="avatar-text">الوجه الخلفي للبطاقة</p>
-                        </div>
-                      </div>
-
-                      <div className="input-group">
-                        <label>صورة شخصية (اختياري)</label>
-                        <div className="avatar-upload">
-                          <label htmlFor="avatarInput" className="avatar-label">
-                            {avatarPreview ? (
-                              <Image
-                                fill
-                                src={avatarPreview}
-                                alt="Avatar Preview"
-                                style={{
-                                  objectFit: "cover",
-                                  objectPosition: "center",
-                                }}
-                              />
-                            ) : (
-                              <span>+</span>
-                            )}
-                          </label>
-                          <input
-                            id="avatarInput"
-                            type="file"
-                            accept="image/*"
-                            onChange={handleAvatarChange}
-                            hidden
-                          />
-                          <p className="avatar-text">
-                            إضافة صورة شخصية (اختياري)
-                          </p>
                         </div>
                       </div>
 

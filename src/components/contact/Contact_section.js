@@ -36,6 +36,7 @@ export default function ContactUI() {
   const isHomePage =
     pathname === "/ar" || pathname === "/en" || pathname === "/";
 
+    
   return (
     <>
       {!isHomePage && (
