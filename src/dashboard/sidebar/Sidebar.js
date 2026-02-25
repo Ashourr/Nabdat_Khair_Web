@@ -23,8 +23,16 @@ function SidebarContent({ closeAll }) {
   const locale = useLocale();
   const pathname = usePathname();
 
-  // غير القيمة دي حسب اليوزر الحقيقي (user | volunteer | organization)
-  const role = "volunteer";
+  // ✅ 1. استلام الرول ديناميكياً من الـ localStorage
+  const [role, setRole] = useState("user"); // القيمة الافتراضية
+
+  useEffect(() => {
+    // نجلب الرول المحفوظ (user أو volunteer)
+    const savedRole = localStorage.getItem("userRole");
+    if (savedRole) {
+      setRole(savedRole);
+    }
+  }, []);
 
   const menus = {
     user: [
@@ -64,7 +72,7 @@ function SidebarContent({ closeAll }) {
       {
         href: `/${locale}/dashboard/volunteer`,
         label: locale === "en" ? "Home" : "الرئيسية",
-        basePath: "/dashboard/volunteer", // المسار الأساسي
+        basePath: "/dashboard/volunteer",
         icon: faHouse,
       },
       {
@@ -127,7 +135,8 @@ function SidebarContent({ closeAll }) {
     ],
   };
 
-  const menuItems = menus[role] || [];
+  // ✅ 2. اختيار المنيو بناءً على الرول الحالي
+  const menuItems = menus[role] || menus["user"];
 
   return (
     <div className="sidebar-content">
@@ -153,11 +162,6 @@ function SidebarContent({ closeAll }) {
       </Link>
       <ul className="menu-list">
         {menuItems.map((item, index) => {
-          /**
-           * 🛠️ الحل هنا:
-           * إذا كان المسار هو "الرئيسية" (المسار القصير)، لازم يطابق pathname بالظبط.
-           * غير كدة، نستخدم startsWith عشان الصفحات الفرعية تنور الأب بتاعها.
-           */
           const isActive =
             item.basePath === "/dashboard/user" ||
             item.basePath === "/dashboard/volunteer" ||
@@ -183,6 +187,7 @@ function SidebarContent({ closeAll }) {
   );
 }
 
+// مكون السايدبار الرئيسي يبقى كما هو
 export default function Sidebar({ isMobileOpen = false, onMobileToggle }) {
   const sidebarRef = useRef(null);
   const locale = useLocale();

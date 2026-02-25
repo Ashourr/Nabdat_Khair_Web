@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSave,
@@ -9,27 +9,34 @@ import {
   faPhone,
   faMapMarkerAlt,
   faTimes,
-  faShieldAlt,
   faHeart,
-  faVenusMars,
   faBriefcase,
-  faClock,
   faIdCard,
   faIdCardAlt,
   faEye,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
-import "./profileEdit.css"; // ✅ استيراد ملف CSS
+import "./profileEdit.css";
 import toast from "react-hot-toast";
 import { useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
 
 export default function ProfileEdit() {
   const locale = useLocale();
-  // غير القيمة دي حسب اليوزر الحقيقي (user | volunteer | organization)
-  const role = "volunteer";
+  const router = useRouter();
 
-  // حالة لعرض الصورة المكبرة
+  // 1. تحديد الرول من التخزين المحلي
+  const [role, setRole] = useState("user");
+
+  useEffect(() => {
+    const savedRole = localStorage.getItem("userRole");
+    if (savedRole) {
+      setRole(savedRole);
+    }
+  }, []);
+
+  // 2. حالات المودال والصور
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -40,64 +47,44 @@ export default function ProfileEdit() {
     city: "الجيزة",
     interests: ["طبية", "تعليمية", "سقيا الماء"],
     avatar: "/images/team-0.webp",
-    // بيانات إضافية للمتطوع
     gender: "ذكر",
     volunteerType: "فردي",
     availability: "دوام جزئي",
     volunteerFields: ["صحة", "تعليم", "إغاثة"],
-    nationalId: "12345678901234", // الرقم القومي
-    idFrontImage: "/images/faq.webp", // صورة البطاقة الأمامية
-    idBackImage: "/images/faq.webp", // صورة البطاقة الخلفية
+    nationalId: "12345678901234",
+    idFrontImage: "/images/faq.webp",
+    idBackImage: "/images/faq.webp",
   });
 
-  // دالة لعرض الصورة
+  // دالة فتح المودال
   const openImageModal = (imageSrc, imageLabel) => {
-    setSelectedImage({
-      src: imageSrc,
-      label: imageLabel,
-    });
+    setSelectedImage({ src: imageSrc, label: imageLabel });
     setIsModalOpen(true);
   };
 
-  // دالة لإغلاق المودال
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedImage(null);
   };
 
-  // --- دالة التعامل مع تغيير الصورة ---
+  // دالة تغيير الصورة الشخصية
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
-
     if (file) {
-      console.log(
-        "حجم الملف المختار:",
-        (file.size / 1024 / 1024).toFixed(2),
-        "MB",
-      );
-
-      const maxSizeInBytes = 1024 * 1024; // 1 ميجابايت
-
+      const maxSizeInBytes = 1024 * 1024; // 1MB
       if (file.size > maxSizeInBytes) {
         toast.error(
           locale === "en"
-            ? "File is too large! Maximum limit is 1MB."
-            : "الملف كبير جداً! الحد الأقصى المسموح به هو 1 ميجابايت.",
+            ? "File too large! Max 1MB."
+            : "الملف كبير جداً! الحد الأقصى 1 ميجابايت.",
         );
-        e.target.value = "";
         return;
       }
-
       const reader = new FileReader();
       reader.onload = () => {
-        setFormData((prev) => ({
-          ...prev,
-          avatar: reader.result,
-        }));
+        setFormData((prev) => ({ ...prev, avatar: reader.result }));
         toast.success(
-          locale === "en"
-            ? "Image selected successfully!"
-            : "تم اختيار الصورة بنجاح!",
+          locale === "en" ? "Image selected!" : "تم اختيار الصورة!",
         );
       };
       reader.readAsDataURL(file);
@@ -106,29 +93,26 @@ export default function ProfileEdit() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleInterestChange = (interest) => {
     setFormData((prev) => {
       const isSelected = prev.interests.includes(interest);
-      const updatedInterests = isSelected
+      const updated = isSelected
         ? prev.interests.filter((i) => i !== interest)
         : [...prev.interests, interest];
-      return { ...prev, interests: updatedInterests };
+      return { ...prev, interests: updated };
     });
   };
 
   const handleVolunteerFieldChange = (field) => {
     setFormData((prev) => {
       const isSelected = prev.volunteerFields.includes(field);
-      const updatedFields = isSelected
+      const updated = isSelected
         ? prev.volunteerFields.filter((f) => f !== field)
         : [...prev.volunteerFields, field];
-      return { ...prev, volunteerFields: updatedFields };
+      return { ...prev, volunteerFields: updated };
     });
   };
 
@@ -138,6 +122,9 @@ export default function ProfileEdit() {
     toast.success(
       locale === "en" ? "Profile Updated!" : "تم تحديث الملف بنجاح!",
     );
+    setTimeout(() => {
+      router.push(`/${locale}/dashboard/${role}/profile`);
+    }, 1500);
   };
 
   const allInterests = [
@@ -147,17 +134,7 @@ export default function ProfileEdit() {
     "تجهيز عرائس",
     "عمليات جراحية",
     "تعليم وفقر",
-    "إطعام مساكين",
-    "فك كرب غارمين",
-    "أطراف صناعية",
-    "صدقة جارية",
-    "زكاة مال",
-    "رعاية مسنين",
-    "حقيبة مدرسية",
-    "أضحية وعقيقة",
-    "دعم ذوي الهمم",
   ];
-
   const allVolunteerFields = [
     "صحة",
     "تعليم",
@@ -165,11 +142,7 @@ export default function ProfileEdit() {
     "بيئة",
     "رياضة",
     "ثقافة",
-    "تنمية",
-    "إعلام",
   ];
-
-  const volunteerTypeOptions = ["عام", "خاص"];
 
   return (
     <div className="profile-container">
@@ -180,13 +153,13 @@ export default function ProfileEdit() {
             <h2>{locale === "en" ? "Edit Profile" : "تعديل البيانات"}</h2>
             <p>
               {locale === "en"
-                ? "Update your personal information and preferences"
-                : "قم بتحديث معلوماتك الشخصية وتفضيلات التطوع"}
+                ? "Update your personal information"
+                : "قم بتحديث معلوماتك الشخصية"}
             </p>
           </div>
           <div className="action-buttons">
             <Link
-              href={`/${locale}/dashboard/user/profile`}
+              href={`/${locale}/dashboard/${role}/profile`}
               className="btn-cancel"
             >
               <FontAwesomeIcon icon={faTimes} />{" "}
@@ -202,7 +175,12 @@ export default function ProfileEdit() {
         {/* قسم الصورة الشخصية */}
         <div className="avatar-edit-section">
           <div className="avatar-preview-wrapper">
-            <Image width={200} height={200} src={formData.avatar} alt="Profile" />
+            <Image
+              width={200}
+              height={200}
+              src={formData.avatar}
+              alt="Profile"
+            />
             <label htmlFor="avatar-upload" className="change-photo-badge">
               <FontAwesomeIcon icon={faCamera} />
               <input
@@ -228,10 +206,8 @@ export default function ProfileEdit() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder={locale === "en" ? "Enter your name" : "أدخل اسمك"}
             />
           </div>
-
           <div className="input-group">
             <label>
               <FontAwesomeIcon icon={faEnvelope} />{" "}
@@ -244,7 +220,6 @@ export default function ProfileEdit() {
               onChange={handleChange}
             />
           </div>
-
           <div className="input-group">
             <label>
               <FontAwesomeIcon icon={faPhone} />{" "}
@@ -257,7 +232,6 @@ export default function ProfileEdit() {
               onChange={handleChange}
             />
           </div>
-
           <div className="input-group">
             <label>
               <FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
@@ -272,30 +246,27 @@ export default function ProfileEdit() {
           </div>
         </div>
 
-        {/* حقول إضافية للمتطوع */}
+        {/* حقول المتطوع */}
         {role === "volunteer" && (
           <>
             <div className="inputs-grid" style={{ margin: "30px 0" }}>
               <div className="input-group">
                 <label>
                   <FontAwesomeIcon icon={faBriefcase} />{" "}
-                  {locale === "en" ? "Volunteer Type" : "نوع التطوع"}
+                  {locale === "en" ? "Availability" : "التفرغ"}
                 </label>
                 <select
-                  name="volunteerType"
-                  value={formData.volunteerType}
+                  name="availability"
+                  value={formData.availability}
                   onChange={handleChange}
                 >
-                  {volunteerTypeOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
+                  <option value="دوام جزئي">دوام جزئي</option>
+                  <option value="دوام كامل">دوام كامل</option>
                 </select>
               </div>
             </div>
 
-            {/* قسم البطاقة الشخصية - غير قابل للتعديل */}
+            {/* البطاقة الشخصية (عرض فقط) */}
             <div className="id-card-section">
               <h3>
                 <FontAwesomeIcon
@@ -304,13 +275,6 @@ export default function ProfileEdit() {
                 />
                 {locale === "en" ? "National ID Card" : "البطاقة الشخصية"}
               </h3>
-              <p className="hint">
-                {locale === "en"
-                  ? "Your ID card information (cannot be edited)"
-                  : "معلومات بطاقتك الشخصية (لا يمكن تعديلها)"}
-              </p>
-
-              {/* الرقم القومي */}
               <div className="input-group" style={{ marginBottom: "20px" }}>
                 <label>
                   <FontAwesomeIcon icon={faIdCard} />{" "}
@@ -321,16 +285,10 @@ export default function ProfileEdit() {
                   value={formData.nationalId}
                   disabled
                   readOnly
-                  style={{
-                    backgroundColor: "#f1f5f9",
-                    color: "#64748b",
-                    cursor: "not-allowed",
-                    direction: "ltr",
-                  }}
+                  className="disabled-input"
                 />
               </div>
 
-              {/* صور البطاقة */}
               <div className="id-cards-container">
                 <div className="id-card-item">
                   <p className="id-card-label">
@@ -339,7 +297,7 @@ export default function ProfileEdit() {
                   <div className="id-card-image">
                     <Image
                       width={200}
-                      height={200}
+                      height={120}
                       src={formData.idFrontImage}
                       alt="ID Front"
                     />
@@ -349,9 +307,7 @@ export default function ProfileEdit() {
                       onClick={() =>
                         openImageModal(
                           formData.idFrontImage,
-                          locale === "en"
-                            ? "ID Card - Front"
-                            : "البطاقة الشخصية - الوجه الأمامي",
+                          locale === "en" ? "ID Front" : "الوجه الأمامي",
                         )
                       }
                     >
@@ -360,15 +316,14 @@ export default function ProfileEdit() {
                     </button>
                   </div>
                 </div>
-
                 <div className="id-card-item">
                   <p className="id-card-label">
                     {locale === "en" ? "Back Side" : "الوجه الخلفي"}
                   </p>
                   <div className="id-card-image">
-                    <Image 
+                    <Image
                       width={200}
-                      height={200}
+                      height={120}
                       src={formData.idBackImage}
                       alt="ID Back"
                     />
@@ -378,9 +333,7 @@ export default function ProfileEdit() {
                       onClick={() =>
                         openImageModal(
                           formData.idBackImage,
-                          locale === "en"
-                            ? "ID Card - Back"
-                            : "البطاقة الشخصية - الوجه الخلفي",
+                          locale === "en" ? "ID Back" : "الوجه الخلفي",
                         )
                       }
                     >
@@ -393,19 +346,8 @@ export default function ProfileEdit() {
             </div>
 
             {/* مجالات التطوع */}
-            <div className="interests-selection" style={{ margin: "20px 0" }}>
-              <h3>
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  style={{ marginLeft: "8px", color: "#7c3aed" }}
-                />
-                {locale === "en" ? "Volunteer Fields" : "مجالات التطوع"}
-              </h3>
-              <p className="hint">
-                {locale === "en"
-                  ? "Select the fields you're interested in volunteering"
-                  : "اختر المجالات التي ترغب في التطوع بها"}
-              </p>
+            <div className="interests-selection" style={{ marginTop: "30px" }}>
+              <h3>{locale === "en" ? "Volunteer Fields" : "مجالات التطوع"}</h3>
               <div className="tags-container">
                 {allVolunteerFields.map((field) => (
                   <label
@@ -426,9 +368,7 @@ export default function ProfileEdit() {
           </>
         )}
 
-        <hr className="divider" />
-
-        {/* الاهتمامات الخيرية - تظهر للجميع */}
+        {/* الاهتمامات الخيرية للمتبرع */}
         {role === "user" && (
           <div className="interests-selection">
             <h3>
@@ -438,11 +378,6 @@ export default function ProfileEdit() {
               />
               {locale === "en" ? "Charity Interests" : "الاهتمامات الخيرية"}
             </h3>
-            <p className="hint">
-              {locale === "en"
-                ? "Select your charity interests to get personalized recommendations"
-                : "اختر اهتماماتك الخيرية للحصول على توصيات مخصصة"}
-            </p>
             <div className="tags-container">
               {allInterests.map((interest) => (
                 <label
@@ -463,7 +398,7 @@ export default function ProfileEdit() {
         )}
       </form>
 
-      {/* Modal لعرض الصورة المكبرة */}
+      {/* Modal عرض الصور */}
       {isModalOpen && selectedImage && (
         <div className="image-modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -474,11 +409,12 @@ export default function ProfileEdit() {
               </button>
             </div>
             <div className="modal-body">
-              <Image 
-                width={500}
-                height={500}
+              <Image
+                width={600}
+                height={400}
                 src={selectedImage.src}
-                alt={selectedImage.label}
+                alt="Full view"
+                className="full-image"
               />
             </div>
           </div>
@@ -487,19 +423,8 @@ export default function ProfileEdit() {
 
       {/* قسم الأمان */}
       <div className="security-alert-box">
-        <div className="alert-content">
-          <div className="icon-shield">🛡️</div>
-          <div>
-            <h4>{locale === "en" ? "Account Security" : "أمان الحساب"}</h4>
-            <p>
-              {locale === "en"
-                ? "Manage your password and security settings"
-                : "إدارة كلمة المرور وإعدادات الأمان"}
-            </p>
-          </div>
-        </div>
         <Link
-          href={`/${locale}/dashboard/user/profile/security-settings`}
+          href={`/${locale}/dashboard/${role}/profile/security-settings`}
           className="btn-security-link"
         >
           {locale === "en" ? "Security Settings" : "إعدادات الأمان"}

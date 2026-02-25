@@ -9,6 +9,7 @@
   color: var(--colorwhite);
   position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 .header.en {
   padding: 50px 0px;
@@ -157,4 +158,26 @@
   .header {
     padding: 50px 0px;
   }
+}
+
+.role-links-container {
+  left: 20px; /* أو right حسب التصميم */
+}
+
+.role-link-btn {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.role-link-btn:hover {
+  background: var(--main-color, #28a745); /* استبدله بلونك الأساسي */
+  border-color: transparent;
+  transform: translateY(-2px);
 }
