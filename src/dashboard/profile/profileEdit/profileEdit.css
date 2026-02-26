@@ -1,10 +1,6 @@
 .profile-container {
   max-width: 900px;
-  direction: rtl;
-  font-family: inherit;
-  margin: 0 auto;
 }
-
 .profile-container .edit-card {
   background: #ffffff;
   border-radius: 24px;
@@ -12,7 +8,6 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.247);
   border: 1px solid #e2e8f0;
 }
-
 .profile-container .edit-header {
   display: flex;
   justify-content: space-between;
@@ -20,23 +15,19 @@
   gap: 20px;
   align-items: center;
 }
-
 .profile-container .title-area h2 {
   font-size: 24px;
   color: #1e293b;
   margin-bottom: 8px;
 }
-
 .profile-container .title-area p {
   color: #64748b;
   font-size: 14px;
 }
-
 .profile-container .action-buttons {
   display: flex;
   gap: 12px;
 }
-
 .profile-container .btn-save {
   background: #7c3aed;
   color: white;
@@ -50,12 +41,10 @@
   gap: 8px;
   transition: 0.3s;
 }
-
 .profile-container .btn-save:hover {
   background: #6d28d9;
   transform: translateY(-2px);
 }
-
 .profile-container .btn-cancel {
   background: #f1f5f9;
   color: #475569;
@@ -69,23 +58,19 @@
   gap: 8px;
   cursor: pointer;
 }
-
 .profile-container .btn-cancel:hover {
   background: #e2e8f0;
 }
-
 .profile-container .avatar-edit-section {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
 }
-
 .profile-container .avatar-preview-wrapper {
   position: relative;
   width: 140px;
   height: 140px;
 }
-
 .profile-container .avatar-preview-wrapper img {
   width: 100%;
   height: 100%;
@@ -93,7 +78,6 @@
   object-fit: cover;
   border: 4px solid #f5f3ff;
 }
-
 .profile-container .change-photo-badge {
   position: absolute;
   bottom: 5px;
@@ -110,22 +94,18 @@
   border: 3px solid white;
   transition: 0.3s;
 }
-
 .profile-container .change-photo-badge:hover {
   transform: scale(1.1);
   background: #6d28d9;
 }
-
 .profile-container .inputs-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 25px;
 }
-
 .profile-container .input-group {
   margin-bottom: 15px;
 }
-
 .profile-container .input-group label {
   display: block;
   margin-bottom: 8px;
@@ -133,13 +113,11 @@
   color: #475569;
   font-size: 14px;
 }
-
 .profile-container .input-group label svg {
   margin-left: 8px;
   color: #7c3aed;
   font-size: 13px;
 }
-
 .profile-container .input-group input,
 .profile-container .input-group select {
   width: 100%;
@@ -151,7 +129,6 @@
   font-size: 15px;
   transition: all 0.3s ease;
 }
-
 .profile-container .input-group input:focus,
 .profile-container .input-group select:focus {
   outline: none;
@@ -159,44 +136,36 @@
   background: white;
   box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
 }
-
 .profile-container .divider {
   border: 0;
   border-top: 1px solid #f1f5f9;
   margin: 40px 0;
 }
-
 .profile-container .interests-selection {
   margin-top: 20px;
 }
-
 .profile-container .interests-selection h3 {
   font-size: 18px;
   color: #1e293b;
   margin-bottom: 10px;
 }
-
 .profile-container .interests-selection h3 svg {
   margin-left: 8px;
   color: #7c3aed;
 }
-
 .profile-container .hint {
   color: #94a3b8;
   font-size: 13px;
   margin-bottom: 20px;
 }
-
 .profile-container .tags-container {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
-
 .profile-container .check-tag {
   cursor: pointer;
 }
-
 .profile-container .check-tag span {
   display: block;
   padding: 8px 20px;
@@ -208,15 +177,13 @@
   font-weight: 600;
   transition: 0.3s;
 }
-
 .profile-container .check-tag.active span {
   background: #7c3aed;
   color: white;
   border-color: #7c3aed;
   box-shadow: 0 4px 10px rgba(124, 58, 237, 0.2);
 }
-
-.profile-container .security-alert-box {
+.security-alert-box {
   margin-top: 40px;
   background: #f0f9ff;
   border: 1px solid #bae6fd;
@@ -226,29 +193,24 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .profile-container .alert-content {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-
 .profile-container .icon-shield {
   font-size: 28px;
 }
-
 .profile-container .alert-content h4 {
   color: #0369a1;
   margin-bottom: 5px;
   font-size: 16px;
 }
-
 .profile-container .alert-content p {
   color: #0ea5e9;
   font-size: 13px;
   margin: 0;
 }
-
 .profile-container .btn-security-link {
   background: white;
   color: #0ea5e9;
@@ -261,35 +223,28 @@
   transition: 0.3s;
   cursor: pointer;
 }
-
 .profile-container .btn-security-link:hover {
   background: #0ea5e9;
   color: white;
 }
-
-/* ID Card Styles */
 .profile-container .id-card-section {
   margin-top: 30px;
 }
-
 .profile-container .id-cards-container {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
 }
-
 .profile-container .id-card-item {
   flex: 1;
   min-width: 200px;
 }
-
 .profile-container .id-card-label {
   font-size: 14px;
   color: #64748b;
   margin-bottom: 8px;
   font-weight: 600;
 }
-
 .profile-container .id-card-image {
   position: relative;
   width: 100%;
@@ -299,13 +254,11 @@
   overflow: hidden;
   border: 1px solid #e2e8f0;
 }
-
 .profile-container .id-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .profile-container .view-id-btn {
   position: absolute;
   bottom: 5px;
@@ -322,12 +275,9 @@
   gap: 4px;
   transition: 0.3s;
 }
-
 .profile-container .view-id-btn:hover {
   background: #7c3aed;
 }
-
-/* Modal Styles */
 .profile-container .image-modal {
   position: fixed;
   top: 0;
@@ -340,15 +290,13 @@
   justify-content: center;
   z-index: 1000;
 }
-
 .profile-container .modal-content {
   background: white;
   border-radius: 16px;
-  max-width: 90%;
-  max-height: 90vh;
+  max-width: 400px;
+  max-height: 500px;
   overflow: hidden;
 }
-
 .profile-container .modal-header {
   padding: 15px 20px;
   border-bottom: 1px solid #e2e8f0;
@@ -356,13 +304,11 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .profile-container .modal-header h3 {
   margin: 0;
   color: #1e293b;
   font-size: 18px;
 }
-
 .profile-container .close-modal-btn {
   background: none;
   border: none;
@@ -372,69 +318,102 @@
   padding: 5px 10px;
   transition: 0.3s;
 }
-
 .profile-container .close-modal-btn:hover {
   color: #7c3aed;
 }
-
 .profile-container .modal-body {
-  padding: 20px;
+  /* padding: 20px; */
   display: flex;
   justify-content: center;
   align-items: center;
   max-height: calc(90vh - 70px);
   overflow: auto;
 }
-
 .profile-container .modal-body img {
   width: 100%;
+  border-radius: 10px !important;
   height: auto;
   max-height: 70vh;
   object-fit: contain;
 }
+.profile-container .security-box {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 20px;
+  padding: 20px 30px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-container .sec-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.profile-container .sec-info svg {
+  font-size: 24px;
+  color: #0ea5e9;
+}
+.profile-container .sec-info h4 {
+  margin: 0;
+  color: #0369a1;
+  font-size: 16px;
+}
+.profile-container .sec-info p {
+  margin: 2px 0 0;
+  color: #0ea5e9;
+  font-size: 13px;
+}
+.profile-container .sec-link {
+  background: white;
+  border: 1px solid #0ea5e9;
+  color: #0ea5e9;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.profile-container .sec-link:hover {
+  background: #0ea5e9;
+  color: white;
+}
 
-/* Responsive */
 @media (max-width: 768px) {
   .profile-container .edit-header {
     flex-direction: column;
     text-align: center;
   }
-  
   .profile-container .action-buttons {
     width: 100%;
     justify-content: center;
   }
-  
   .profile-container .inputs-grid {
     grid-template-columns: 1fr;
   }
-  
   .profile-container .security-alert-box {
     flex-direction: column;
     gap: 20px;
     text-align: center;
   }
-  
   .profile-container .alert-content {
     flex-direction: column;
     gap: 10px;
   }
-  
   .profile-container .id-cards-container {
     flex-direction: column;
   }
-  
   .profile-container .id-card-item {
     width: 100%;
   }
 }
-
 @media (max-width: 800px) {
   .profile-container .btn-save,
   .profile-container .btn-cancel {
     font-size: 13px !important;
   }
-  
   .profile-container .edit-card {
     padding: 25px;
   }

@@ -1,8 +1,6 @@
 .settings-page {
   max-width: 900px;
   margin: 0px auto;
-  /* padding: 0 20px; */
-  direction: rtl;
 }
 .settings-page .settings-header {
   margin-bottom: 35px;

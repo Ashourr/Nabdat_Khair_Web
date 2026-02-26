@@ -13,6 +13,7 @@ import {
   faClock,
   faGlobe,
   faListCheck,
+  faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { faWpforms } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,17 +23,23 @@ import imgNav from "../../../public/images/logo.png";
 function SidebarContent({ closeAll }) {
   const locale = useLocale();
   const pathname = usePathname();
+  const menuListRef = useRef(null); // ✅ 1. أضفنا ref
 
-  // ✅ 1. استلام الرول ديناميكياً من الـ localStorage
-  const [role, setRole] = useState("user"); // القيمة الافتراضية
+  const [role, setRole] = useState("user");
 
   useEffect(() => {
-    // نجلب الرول المحفوظ (user أو volunteer)
     const savedRole = localStorage.getItem("userRole");
     if (savedRole) {
       setRole(savedRole);
     }
   }, []);
+
+  // ✅ 2. أضفنا useEffect للسكرول
+  useEffect(() => {
+    if (menuListRef.current) {
+      menuListRef.current.scrollTop = menuListRef.current.scrollHeight;
+    }
+  }, [role]);
 
   const menus = {
     user: [
@@ -103,7 +110,7 @@ function SidebarContent({ closeAll }) {
         href: `/${locale}/dashboard/volunteer/volunteerRatings`,
         label: locale === "en" ? "Volunteer Ratings" : "تقييم التطوع",
         basePath: "/dashboard/volunteer/volunteerRatings",
-        icon: faBell,
+        icon: faStar,
       },
       {
         href: `/${locale}/dashboard/volunteer/profile`,
@@ -135,7 +142,6 @@ function SidebarContent({ closeAll }) {
     ],
   };
 
-  // ✅ 2. اختيار المنيو بناءً على الرول الحالي
   const menuItems = menus[role] || menus["user"];
 
   return (
@@ -160,7 +166,14 @@ function SidebarContent({ closeAll }) {
           />
         </div>
       </Link>
-      <ul className="menu-list">
+      <ul
+        ref={menuListRef} // ✅ 3. أضفنا ref هنا
+        className="menu-list"
+        style={{
+          width: "110%",
+          padding: locale === "en" ? "0 20px 0px 0px" : "0 0px 0px 20px ",
+        }}
+      >
         {menuItems.map((item, index) => {
           const isActive =
             item.basePath === "/dashboard/user" ||
@@ -187,7 +200,6 @@ function SidebarContent({ closeAll }) {
   );
 }
 
-// مكون السايدبار الرئيسي يبقى كما هو
 export default function Sidebar({ isMobileOpen = false, onMobileToggle }) {
   const sidebarRef = useRef(null);
   const locale = useLocale();

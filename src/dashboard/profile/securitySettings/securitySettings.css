@@ -1,7 +1,6 @@
 .security-page {
-  direction: rtl;
+  /* direction: rtl; */
   text-align: right;
-  /* padding: 40px; */
   background-color: #ffffff;
   font-family: sans-serif;
 }
@@ -217,4 +216,20 @@
     flex-direction: column;
     gap: 20px;
   }
+}
+
+@media (max-width: 550px) {
+  .security-page .history-card {
+    padding: 10px;
+  }
+  .security-page .device-row {
+    padding: 15px 10px;
+  }
+  .security-page .red-logout-btn {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+  .security-page .device-name {
+    max-width: 150px;
+}
 }

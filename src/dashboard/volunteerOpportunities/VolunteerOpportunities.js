@@ -15,7 +15,7 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 import Select from "react-select";
 
-// ✅ 1. نقل البيانات خارج المكون لمنع إعادة التعريف في كل رندر (حل مشكلة التحذيرات)
+
 const ALL_OPPORTUNITIES = [
   {
     id: 1,
@@ -55,7 +55,6 @@ const ALL_OPPORTUNITIES = [
   },
 ];
 
-// ✅ 2. دوال الترجمة (خارج المكون لزيادة الكفاءة)
 const translations = {
   locations: { 'القاهرة': 'Cairo', 'الإسكندرية': 'Alexandria', 'كل المدن': 'All Cities' },
   categories: { 'تعليمي': 'Educational', 'ميداني': 'Field', 'إداري': 'Administrative' },
@@ -72,16 +71,14 @@ const translate = (value, type, locale) => {
 export default function VolunteerOpportunities() {
   const locale = useLocale();
 
-  // ✅ 3. استخراج القيم الفريدة في عملية واحدة محسنة
   const uniqueData = useMemo(() => {
     return {
       locations: [...new Set(ALL_OPPORTUNITIES.map(opp => opp.location))],
       categories: [...new Set(ALL_OPPORTUNITIES.map(opp => opp.category))],
       types: [...new Set(ALL_OPPORTUNITIES.map(opp => opp.type))]
     };
-  }, []); // مصفوفة فارغة لأن البيانات ثابتة خارج المكون
+  }, []);
 
-  // ✅ 4. بناء خيارات Select ديناميكياً
   const cityOptions = useMemo(() => [
     { value: "all", label: locale === "en" ? "All Cities" : "كل المدن" },
     ...uniqueData.locations.map(loc => ({
@@ -106,13 +103,11 @@ export default function VolunteerOpportunities() {
     }))
   ], [uniqueData.types, locale]);
 
-  // حالات الفلترة
   const [selectedCity, setSelectedCity] = useState(cityOptions[0]);
   const [selectedCategory, setSelectedCategory] = useState(categoryOptions[0]);
   const [selectedWorkType, setSelectedWorkType] = useState(workTypeOptions[0]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // ✅ 5. الفلترة النهائية
   const filteredOpportunities = useMemo(() => {
     return ALL_OPPORTUNITIES.filter(opp => {
       const cityMatch = selectedCity.value === "all" || opp.location === selectedCity.value;
@@ -128,7 +123,6 @@ export default function VolunteerOpportunities() {
 
   return (
     <div className="opp-container">
-      {/* Header Section */}
       <div className="opp-header">
         <h2>
           استكشف <span>فرص التطوع</span> 🌍
@@ -136,7 +130,6 @@ export default function VolunteerOpportunities() {
         <p>ابحث عن الفرصة التي تناسب مهاراتك واصنع تأثيراً حقيقياً اليوم.</p>
       </div>
 
-      {/* Filters Section */}
       <div className="filters-bar">
         <div className="search-box">
           <FontAwesomeIcon icon={faSearch} className="search-icon" />
@@ -179,11 +172,10 @@ export default function VolunteerOpportunities() {
         </div>
       </div>
 
-      <div className="results-count">
+      <div className="results-count mb-5">
         {filteredOpportunities.length} {locale === "en" ? "opportunities found" : "فرصة متاحة"}
       </div>
 
-      {/* Opportunities List */}
       <div className="opp-grid">
         {filteredOpportunities.map((opp) => (
           <div className="opportunity-card" key={opp.id}>

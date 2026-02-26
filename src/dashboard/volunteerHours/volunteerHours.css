@@ -1,79 +1,27 @@
-/* Reset & Base Styles */
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
-
-/* Base Colors - ثابتة بدون متغيرات */
 .hours-container {
-  /* padding: 30px; */
-  /* background: #f8fafc; */
   min-height: 100vh;
-  direction: rtl;
   max-width: 1000px;
   margin: 0 auto;
 }
-
-/* ===== Shared Components ===== */
-/* بطاقات إحصائية موحدة */
-.stat-box {
-  padding: 20px;
-  border-radius: 15px;
-  background: white;
-  border: 1px solid #e2e8f0;
-}
-
-.stat-box.primary {
-  background: #7c3aed;
-  color: white;
-  border: none;
-}
-
-.stat-card-modern {
-  position: relative;
-  overflow: hidden;
-  padding: 30px;
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-}
-
-/* ألوان الخلفية */
-.primary-gradient {
-  background: linear-gradient(135deg, #7c3aed, #6366f1);
-  color: white;
-}
-
-.secondary-white {
-  background: white;
-  border: 1px solid #e2e8f0;
-}
-
-/* ===== Header Section ===== */
-.hours-header-main {
+.hours-container .hours-header-main {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
 }
-
-.welcome-text h2 {
+.hours-container .welcome-text h2 {
   color: #1e293b;
   font-size: 24px;
   margin-bottom: 5px;
 }
-
-.text-purple {
+.hours-container .text-purple {
   color: #7c3aed;
   margin-left: 10px;
 }
-
-.print-action-btn,
-.download-all-btn {
-  background: #1e293b;
-  color: white;
-  border: none;
+.hours-container .print-action-btn {
+  background: white;
+  color: #1e293b;
+  border: 1.5px solid #e2e8f0;
   padding: 12px 24px;
   border-radius: 14px;
   font-weight: 700;
@@ -83,87 +31,79 @@
   align-items: center;
   transition: 0.3s;
 }
-
-.print-action-btn {
-  background: white;
-  color: #1e293b;
-  border: 1.5px solid #e2e8f0;
-}
-
-.print-action-btn:hover {
+.hours-container .print-action-btn:hover {
   background: #1e293b;
   color: white;
 }
-
-/* ===== Stats Grid ===== */
-.hours-stats-grid {
+.hours-container .hours-stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   margin-bottom: 30px;
 }
-
-.stat-content span {
+.hours-container .stat-card-modern {
+  position: relative;
+  overflow: hidden;
+  padding: 30px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+}
+.hours-container .primary-gradient {
+  background: linear-gradient(135deg, #7c3aed, #6366f1);
+  color: white;
+}
+.hours-container .secondary-white {
+  background: white;
+  border: 1px solid #e2e8f0;
+}
+.hours-container .stat-content span {
   font-size: 14px;
   opacity: 0.9;
   font-weight: 600;
 }
-
-.stat-content h3 {
+.hours-container .stat-content h3 {
   font-size: 32px;
   font-weight: 800;
   margin-top: 5px;
 }
-
-.stat-content h3 span {
+.hours-container .stat-content h3 span {
   font-size: 16px;
   font-weight: 400;
 }
-
-.stat-bg-icon {
+.hours-container .stat-bg-icon {
   position: absolute;
   left: -20px;
   bottom: -20px;
   font-size: 100px;
   opacity: 0.15;
 }
-
-/* ===== Main Content Layout ===== */
-.hours-content-layout {
+.hours-container .hours-content-layout {
   display: grid;
   grid-template-columns: 2.2fr 1fr;
   gap: 25px;
 }
-
-/* History Section */
-.history-section-wrapper {
-  background: #ffffff;
+.hours-container .history-section-wrapper {
+  background: white;
   padding: 25px;
   border-radius: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
-
-.card-inner-header {
+.hours-container .card-inner-header {
   margin-bottom: 20px;
   border-bottom: 1px solid #f1f5f9;
   padding-bottom: 15px;
 }
-
-.task-title-cell {
-  font-weight: 700;
-  color: #7c3aed;
-}
-
-.hour-count {
-  font-weight: 800;
+.hours-container .card-inner-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: #1e293b;
 }
-
-/* ===== Table Scroll Area ===== */
-.table-scroll-area {
+.hours-container .table-scroll-area {
   width: 100%;
   max-height: 400px;
   overflow-y: auto;
@@ -171,95 +111,82 @@
   border-radius: 12px;
   border: 1px solid #f1f5f9;
 }
-
-/* الجداول الموحدة */
-.hours-custom-table {
+.hours-container .hours-custom-table {
   width: 100%;
   border-collapse: collapse;
   min-width: 600px;
 }
-
-.hours-custom-table th {
+.hours-container .hours-custom-table th {
   text-align: right;
   padding: 12px 15px;
   background: #f8fafc;
   color: #64748b;
   font-size: 13px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  box-shadow: inset 0 -1px 0 #f1f5f9;
 }
-
-.hours-custom-table td {
+.hours-container .hours-custom-table td {
   padding: 15px;
   border-bottom: 1px solid #f1f5f9;
   color: #1e293b;
   white-space: nowrap;
 }
-
-/* تثبيت الهيدر أثناء السكرول */
-.hours-custom-table thead th {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: #f8fafc;
-  box-shadow: inset 0 -1px 0 #f1f5f9;
+.hours-container .task-title-cell {
+  font-weight: 700;
+  color: #7c3aed;
 }
-
-/* تحسين شكل السكرول بار */
-.table-scroll-area::-webkit-scrollbar {
+.hours-container .hour-count {
+  font-weight: 800;
+  color: #1e293b;
+}
+.hours-container .table-scroll-area::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-
-.table-scroll-area::-webkit-scrollbar-thumb {
+.hours-container .table-scroll-area::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 10px;
 }
-
-.table-scroll-area::-webkit-scrollbar-track {
+.hours-container .table-scroll-area::-webkit-scrollbar-track {
   background: #f8fafc;
 }
-
-/* ===== Sidebar ===== */
-.distribution-sidebar {
-  background: #ffffff;
+.hours-container .distribution-sidebar {
+  background: white;
   padding: 25px;
   border-radius: 24px;
   height: fit-content;
   border: 1px solid #e2e8f0;
 }
-
-.sidebar-header {
+.hours-container .sidebar-header {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
   color: #1e293b;
 }
-
-.dist-card {
+.hours-container .dist-card {
   margin-bottom: 20px;
 }
-
-.dist-info {
+.hours-container .dist-info {
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
   font-weight: 700;
   font-size: 14px;
 }
-
-.progress-track {
+.hours-container .progress-track {
   height: 8px;
   background: #f1f5f9;
   border-radius: 10px;
 }
-
-.progress-fill {
+.hours-container .progress-fill {
   height: 100%;
   border-radius: 10px;
   transition: 1s ease-in-out;
 }
-
-.impact-box {
+.hours-container .impact-box {
   background: #f5f3ff;
   padding: 15px;
   border-radius: 15px;
@@ -270,117 +197,111 @@
   color: #7c3aed;
   font-size: 13px;
 }
-
-/* ===== Responsive ===== */
+.hours-container .print-only-header,
+.hours-container .print-only-footer {
+  display: none;
+}
 @media (max-width: 900px) {
-  .hours-content-layout {
+  .hours-container .hours-content-layout {
     grid-template-columns: 1fr;
     gap: 25px;
   }
 }
 
-/* ===== Print Styles ===== */
-/* إخفاء عناصر الطباعة في الشاشة */
-.print-only-header,
-.print-only-footer {
-  display: none;
+@media (max-width: 676px) {
+  .hours-container .hours-header-main {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  .hours-container .hours-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .hours-container .stat-card-modern {
+    justify-content: center;
+    text-align: center;
+  }
 }
-
 @media print {
   @page {
     size: A4;
     margin: 20mm;
   }
-
   body {
     direction: rtl !important;
   }
-
-  /* إخفاء عناصر الشاشة */
   .hours-header-main,
   .print-action-btn,
-  .download-all-btn,
-  .hours-stats-grid {
+  .hours-stats-grid,
+  .distribution-sidebar {
     display: none !important;
   }
-
-  /* تعديل منطقة السكرول للطباعة */
   .table-scroll-area {
     max-height: none !important;
     overflow: visible !important;
     border: none !important;
   }
-
   .hours-custom-table {
     min-width: 100% !important;
   }
-
-  /* إظهار عناصر الطباعة */
+  .hours-custom-table th,
+  .hours-custom-table td {
+    border: 1px solid #eee !important;
+    padding: 10px !important;
+  }
   .print-only-header {
     display: block !important;
     border-bottom: 3px solid #7c3aed;
     padding-bottom: 20px;
     margin-bottom: 30px;
   }
-
   .print-only-footer {
     display: block !important;
     margin-top: 50px;
   }
-
   .print-header-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
   }
-
   .print-logo {
     font-size: 28px;
     font-weight: 900;
     color: #7c3aed;
   }
-
   .print-meta {
     font-size: 12px;
     color: #666;
     text-align: left;
   }
-
   .print-title-box {
     text-align: center;
     margin-top: 20px;
   }
-
   .print-title-box h1 {
     font-size: 24px;
     margin: 0;
   }
-
   .print-title-box p {
     color: #666;
     margin-top: 5px;
   }
-
   .print-summary-box {
     background: #f8fafc !important;
     padding: 15px;
     border-radius: 10px;
     text-align: center;
     border: 1px solid #e2e8f0;
-    /* -webkit-print-color-adjust: exact; */
   }
-
   .signature-grid {
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
   }
-
   .sig-block {
     text-align: center;
     width: 180px;
   }
-
   .seal-placeholder {
     height: 70px;
     width: 70px;
@@ -388,29 +309,8 @@
     border-radius: 50%;
     margin: 10px auto;
   }
-
   .sign-line {
     border-bottom: 1px solid #000;
     margin-top: 30px;
-  }
-
-  /* تنسيق الجدول للطباعة */
-  .hours-custom-table th,
-  .hours-custom-table td {
-    border: 1px solid #eee !important;
-    padding: 10px !important;
-  }
-}
-
-@media (max-width: 676px) {
-  .hours-header-main {
-    flex-direction: column;
-  }
-  .hours-stats-grid {
-    grid-template-columns: 1fr;
-  }
-  .stat-card-modern {
-    justify-content: center;
-    text-align: center;
   }
 }

@@ -18,8 +18,7 @@ import { useEffect, useState, useMemo } from "react";
 
 export default function HomeDashboard() {
   const locale = useLocale();
-  
-  // حساب النقاط والمستويات
+
   const donationCount = 12;
   const totalPoints = donationCount * 10;
 
@@ -63,23 +62,23 @@ export default function HomeDashboard() {
     },
   ];
 
-  // ✅ 1. تغليف بيانات الشارت بـ useMemo لمنع إعادة الإنشاء في كل رندر
-  const chartData = useMemo(() => [
-    { label: "مشاريع تعليمية", value: 50, color: "#7c3aed" },
-    { label: "إغاثة عاجلة", value: 25, color: "#3b82f6" },
-    { label: "أخرى", value: 25, color: "rgb(0 0 0)" },
-  ], []);
+  const chartData = useMemo(
+    () => [
+      { label: "مشاريع تعليمية", value: 50, color: "#7c3aed" },
+      { label: "إغاثة عاجلة", value: 25, color: "#3b82f6" },
+      { label: "أخرى", value: 25, color: "rgb(0 0 0)" },
+    ],
+    [],
+  );
 
   const [animatedData, setAnimatedData] = useState(
     chartData.map((item) => ({ ...item, value: 0 })),
   );
 
-  // ✅ 2. إضافة chartData لمصفوفة التبعيات وإضافة Cleanup للأنيميشن
   useEffect(() => {
     let animationFrame;
     const duration = 2000;
     const startTime = performance.now();
-
     function animate(time) {
       const progress = Math.min((time - startTime) / duration, 1);
       const newData = chartData.map((item) => ({
@@ -87,17 +86,13 @@ export default function HomeDashboard() {
         value: Math.floor(item.value * progress),
       }));
       setAnimatedData(newData);
-      
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
       }
     }
-
     animationFrame = requestAnimationFrame(animate);
-
-    // تنظيف الإطار عند مغادرة الصفحة
     return () => cancelAnimationFrame(animationFrame);
-  }, [chartData]); // الآن التبعية موجودة والمرجع ثابت بفضل useMemo
+  }, [chartData]);
 
   let cumulative = 0;
   const gradient = animatedData
@@ -112,7 +107,6 @@ export default function HomeDashboard() {
 
   return (
     <div className="home-dashboard">
-      {/* Header */}
       <div className="title">
         <h2>
           {locale === "en" ? "Welcome " : "مرحبا "}
@@ -125,7 +119,6 @@ export default function HomeDashboard() {
         </p>
       </div>
 
-      {/* Stats */}
       <div className="stats-grid">
         {stats.map((item, index) => (
           <div className="stat-card" key={index}>
@@ -139,12 +132,14 @@ export default function HomeDashboard() {
       </div>
 
       <div className="content-grid">
-        {/* Table */}
         <div className="card table-card">
           <div className="title">
             <h3>آخر التبرعات</h3>
             <div>
-              <Link href="/donations" className="view-all">
+              <Link
+                href={`/${locale}/dashboard/user/donations`}
+                className="view-all"
+              >
                 {locale === "en" ? "View All" : "عرض الكل"}
               </Link>
             </div>
@@ -167,19 +162,34 @@ export default function HomeDashboard() {
                   <tr key={index}>
                     <td>{item.entity}</td>
                     <td>
-                      <span className={item.type === "مالي" ? "status success" : "status pending"}>
+                      <span
+                        className={
+                          item.type === "مالي"
+                            ? "status success"
+                            : "status pending"
+                        }
+                      >
                         {item.type}
                       </span>
                     </td>
                     <td>{item.amount}</td>
                     <td>{item.date}</td>
                     <td>
-                      <span className={item.status === "مكتمل" ? "status success" : "status pending"}>
+                      <span
+                        className={
+                          item.status === "مكتمل"
+                            ? "status success"
+                            : "status pending"
+                        }
+                      >
                         {item.status}
                       </span>
                     </td>
                     <td>
-                      <Link href={`/${locale}/dashboard/user/donations/${index}`} className="details-link">
+                      <Link
+                        href={`/${locale}/dashboard/user/donations/${index}`}
+                        className="details-link"
+                      >
                         {locale === "en" ? "View Details" : "عرض التفاصيل"}
                       </Link>
                     </td>
@@ -190,7 +200,6 @@ export default function HomeDashboard() {
           </div>
         </div>
 
-        {/* Chart */}
         <div className="card">
           <h3>توزيع التبرعات</h3>
           <div
@@ -207,7 +216,10 @@ export default function HomeDashboard() {
             {animatedData.map((item, index) => (
               <div className="chart-info-flex" key={index}>
                 <h5>
-                  <span className="dot" style={{ background: item.color }}></span>
+                  <span
+                    className="dot"
+                    style={{ background: item.color }}
+                  ></span>
                   {item.label}
                 </h5>
                 <h6 style={{ color: item.color, margin: "0px" }}>
@@ -219,7 +231,6 @@ export default function HomeDashboard() {
         </div>
       </div>
 
-      {/* Gamification Card */}
       <div className="card points-sidebar-card">
         <div className="points-header">
           <FontAwesomeIcon icon={faStar} className="star-icon-anim" />

@@ -46,6 +46,7 @@
 .notifications-container .noti-icon-wrapper {
   width: 50px;
   height: 50px;
+  flex-shrink: 0; /* يمنع العنصر من التقلص */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -137,4 +138,12 @@
   font-family: inherit !important;
   direction: rtl !important;
   border-radius: 20px !important;
+}
+@media (max-width: 500px) {
+  .notifications-container .noti-card {
+    padding: 20px 10px;
+  }
+  .notifications-container .noti-top {
+    gap: 3px;
+  }
 }

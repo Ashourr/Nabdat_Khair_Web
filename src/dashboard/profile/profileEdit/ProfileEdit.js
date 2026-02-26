@@ -14,6 +14,7 @@ import {
   faIdCard,
   faIdCardAlt,
   faEye,
+  faShieldAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
@@ -134,20 +135,48 @@ export default function ProfileEdit() {
     "تجهيز عرائس",
     "عمليات جراحية",
     "تعليم وفقر",
+    "إطعام مساكين",
+    "فك كرب غارمين وغارمات",
+    "صدقة جارية",
+    "زكاة مال",
+    "رعاية مسنين",
+    "حقيبة مدرسية وزي مدرسي",
+    "أضحية وعقيقة",
+    "دعم ذوي الهمم",
+    "وصلات كهرباء وأسقف منازل",
+    "علاج أورام وسرطان",
+    "مشاريع صغيرة للأسر المنتجة",
+    "كفالة طلبة العلم",
+    "شتاء آمن",
+    "ترميم المستشفيات الحكومية",
   ];
+
   const allVolunteerFields = [
     "صحة",
     "تعليم",
-    "إغاثة",
-    "بيئة",
-    "رياضة",
-    "ثقافة",
+    "إغاثة وطوارئ",
+    "حماية البيئة والتشجير",
+    "تنظيم فعاليات وندوات",
+    "تعبئة وتوزيع كراتين الإطعام",
+    "بحث اجتماعي",
+    "دعم نفسي للأطفال",
+    "تسويق وتصوير فوتوغرافي",
+    "برمجة وتصميم جرافيك",
+    "ترجمة وتعريب",
+    "توعية دينية وثقافية",
+    "تطوير مهارات الشباب",
+    "رعاية أطفال الشوارع",
+    "إدخال بيانات وأعمال إدارية",
+    "تدريب حرفي ومهني",
+    "زيارة دور الأيتام والمسنين",
+    "توزيع ملابس وكساء",
+    "توعية صحية ووقائية",
+    "إدارة فرق وفرق كشافة",
   ];
 
   return (
     <div className="profile-container">
       <form className="edit-card" onSubmit={handleSubmit}>
-        {/* الهيدر */}
         <div className="edit-header">
           <div className="title-area">
             <h2>{locale === "en" ? "Edit Profile" : "تعديل البيانات"}</h2>
@@ -172,7 +201,6 @@ export default function ProfileEdit() {
           </div>
         </div>
 
-        {/* قسم الصورة الشخصية */}
         <div className="avatar-edit-section">
           <div className="avatar-preview-wrapper">
             <Image
@@ -194,7 +222,6 @@ export default function ProfileEdit() {
           </div>
         </div>
 
-        {/* المعلومات الأساسية */}
         <div className="inputs-grid">
           <div className="input-group">
             <label>
@@ -246,10 +273,9 @@ export default function ProfileEdit() {
           </div>
         </div>
 
-        {/* حقول المتطوع */}
         {role === "volunteer" && (
           <>
-            <div className="inputs-grid" style={{ margin: "30px 0" }}>
+            {/* <div className="inputs-grid" style={{ margin: "30px 0" }}>
               <div className="input-group">
                 <label>
                   <FontAwesomeIcon icon={faBriefcase} />{" "}
@@ -264,9 +290,8 @@ export default function ProfileEdit() {
                   <option value="دوام كامل">دوام كامل</option>
                 </select>
               </div>
-            </div>
+            </div> */}
 
-            {/* البطاقة الشخصية (عرض فقط) */}
             <div className="id-card-section">
               <h3>
                 <FontAwesomeIcon
@@ -368,7 +393,6 @@ export default function ProfileEdit() {
           </>
         )}
 
-        {/* الاهتمامات الخيرية للمتبرع */}
         {role === "user" && (
           <div className="interests-selection">
             <h3>
@@ -398,7 +422,6 @@ export default function ProfileEdit() {
         )}
       </form>
 
-      {/* Modal عرض الصور */}
       {isModalOpen && selectedImage && (
         <div className="image-modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -415,19 +438,35 @@ export default function ProfileEdit() {
                 src={selectedImage.src}
                 alt="Full view"
                 className="full-image"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  maxHeight: "70vh",
+                  objectFit: "contain",
+                  borderRadius: "10px ",
+                  padding:"10px"
+                }}
+                quality={80}
               />
+              
             </div>
           </div>
         </div>
       )}
 
-      {/* قسم الأمان */}
-      <div className="security-alert-box">
+      <div className="security-box">
+        <div className="sec-info">
+          <FontAwesomeIcon icon={faShieldAlt} />
+          <div>
+            <h4>أمان الحساب</h4>
+            <p>يمكنك تغيير كلمة المرور أو تفعيل المصادقة الثنائية</p>
+          </div>
+        </div>
         <Link
           href={`/${locale}/dashboard/${role}/profile/security-settings`}
-          className="btn-security-link"
+          className="sec-link"
         >
-          {locale === "en" ? "Security Settings" : "إعدادات الأمان"}
+          إعدادات الأمان
         </Link>
       </div>
     </div>

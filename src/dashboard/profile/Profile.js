@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react"; // أضفنا useEffect هنا
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserEdit,
@@ -16,6 +16,7 @@ import {
   faClock,
   faTimes,
   faExpand,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
@@ -25,7 +26,6 @@ import { useLocale } from "next-intl";
 export default function Profile() {
   const locale = useLocale();
 
-  // ✅ 1. جعل الرول ديناميكي بدلاً من ثابت
   const [role, setRole] = useState("user");
 
   useEffect(() => {
@@ -35,11 +35,9 @@ export default function Profile() {
     }
   }, []);
 
-  // حالة لعرض الصورة المكبرة
   const [selectedImage, setSelectedImage] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // بيانات افتراضية (يفضل مستقبلاً جلبها من API بناءً على الـ role)
   const [userData] = useState({
     name: "أحمد محمود",
     email: "ahmed@example.com",
@@ -54,9 +52,9 @@ export default function Profile() {
     volunteerType: "فردي",
     availability: "دوام جزئي",
     volunteerFields: ["صحة", "تعليم", "إغاثة", "بيئة"],
-    idFrontImage: "/images/faq.webp", 
-    idBackImage: "/images/faq.webp", 
-    idNumber: "12345678901234", 
+    idFrontImage: "/images/faq.webp", // صورة البطاقة الأمامية
+    idBackImage: "/images/faq.webp", // صورة البطاقة الخلفية
+    idNumber: "12345678901234",
   });
 
   const openImageModal = (imageSrc, imageLabel) => {
@@ -74,7 +72,8 @@ export default function Profile() {
       <div className="header-section">
         <h1>الملف الشخصي</h1>
         <p>
-          إدارة بياناتك الشخصية، تتبع مساهماتك، والتحكم في إعدادات حسابك في مكان واحد.
+          إدارة بياناتك الشخصية، تتبع مساهماتك، والتحكم في إعدادات حسابك في مكان
+          واحد.
         </p>
         <Link
           href={`/${locale}/dashboard/${role}/profile/profile-edit`}
@@ -112,26 +111,30 @@ export default function Profile() {
               <FontAwesomeIcon icon={faUser} /> <span>{userData.name}</span>
             </div>
             <div className="info-item">
-              <FontAwesomeIcon icon={faEnvelope} /> <span>{userData.email}</span>
+              <FontAwesomeIcon icon={faEnvelope} />{" "}
+              <span>{userData.email}</span>
             </div>
             <div className="info-item">
               <FontAwesomeIcon icon={faPhone} /> <span>{userData.phone}</span>
             </div>
             <div className="info-item">
-              <FontAwesomeIcon icon={faMapMarkerAlt} /> <span>{userData.city}</span>
+              <FontAwesomeIcon icon={faMapMarkerAlt} />{" "}
+              <span>{userData.city}</span>
             </div>
 
-            {/* ✅ تفاصيل تظهر فقط للمتطوع */}
             {role === "volunteer" && (
               <>
                 <div className="info-item">
-                  <FontAwesomeIcon icon={faVenusMars} /> <span>{userData.gender}</span>
+                  <FontAwesomeIcon icon={faVenusMars} />{" "}
+                  <span>{userData.gender}</span>
                 </div>
                 <div className="info-item">
-                  <FontAwesomeIcon icon={faBriefcase} /> <span>تطوع {userData.volunteerType}</span>
+                  <FontAwesomeIcon icon={faBriefcase} />{" "}
+                  <span>تطوع {userData.volunteerType}</span>
                 </div>
                 <div className="info-item">
-                  <FontAwesomeIcon icon={faClock} /> <span>{userData.availability}</span>
+                  <FontAwesomeIcon icon={faClock} />{" "}
+                  <span>{userData.availability}</span>
                 </div>
               </>
             )}
@@ -144,7 +147,9 @@ export default function Profile() {
               </h3>
               <div className="interests-tags">
                 {userData.volunteerFields.map((field, i) => (
-                  <span key={i} className="tag">{field}</span>
+                  <span key={i} className="tag">
+                    {field}
+                  </span>
                 ))}
               </div>
             </div>
@@ -157,7 +162,9 @@ export default function Profile() {
               </h3>
               <div className="interests-tags">
                 {userData.interests.map((int, i) => (
-                  <span key={i} className="tag">{int}</span>
+                  <span key={i} className="tag">
+                    {int}
+                  </span>
                 ))}
               </div>
             </div>
@@ -169,37 +176,66 @@ export default function Profile() {
                 <FontAwesomeIcon icon={faIdCard} /> البطاقة الشخصية
               </h3>
               <div className="id-cards-container">
+                {/* الوجه الأمامي */}
                 <div className="id-card-item">
-                  <p className="id-card-label">الوجه الأمامي</p>
+                  <p className="id-card-label">
+                    {locale === "en" ? "Front Side" : "الوجه الأمامي"}
+                  </p>
                   <div className="id-card-image">
                     <Image
                       src={userData.idFrontImage}
-                      alt="البطاقة الأمامية"
-                      width={150}
-                      height={100}
+                      alt="ID Front"
+                      width={200}
+                      height={120}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                     <button
                       className="view-id-btn"
-                      onClick={() => openImageModal(userData.idFrontImage, "البطاقة الشخصية - الوجه الأمامي")}
+                      onClick={() =>
+                        openImageModal(
+                          userData.idFrontImage,
+                          locale === "en" ? "ID Front" : "الوجه الأمامي"
+                        )
+                      }
                     >
-                      <FontAwesomeIcon icon={faCamera} /> عرض
+                      <FontAwesomeIcon icon={faEye} />
+                      <span>{locale === "en" ? "View" : "عرض"}</span>
                     </button>
                   </div>
                 </div>
+
+                {/* الوجه الخلفي */}
                 <div className="id-card-item">
-                  <p className="id-card-label">الوجه الخلفي</p>
+                  <p className="id-card-label">
+                    {locale === "en" ? "Back Side" : "الوجه الخلفي"}
+                  </p>
                   <div className="id-card-image">
                     <Image
                       src={userData.idBackImage}
-                      alt="البطاقة الخلفية"
-                      width={150}
-                      height={100}
+                      alt="ID Back"
+                      width={200}
+                      height={120}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                     <button
                       className="view-id-btn"
-                      onClick={() => openImageModal(userData.idBackImage, "البطاقة الشخصية - الوجه الخلفي")}
+                      onClick={() =>
+                        openImageModal(
+                          userData.idBackImage,
+                          locale === "en" ? "ID Back" : "الوجه الخلفي"
+                        )
+                      }
                     >
-                      <FontAwesomeIcon icon={faCamera} /> عرض
+                      <FontAwesomeIcon icon={faEye} />
+                      <span>{locale === "en" ? "View" : "عرض"}</span>
                     </button>
                   </div>
                 </div>
@@ -210,7 +246,7 @@ export default function Profile() {
         </div>
       </div>
 
-      {/* Modal الصورة المكبرة */}
+      {/* Modal لعرض الصورة المكبرة */}
       {isModalOpen && selectedImage && (
         <div className="image-modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -224,9 +260,15 @@ export default function Profile() {
               <Image
                 src={selectedImage.src}
                 alt={selectedImage.label}
-                width={500}
-                height={400}
-                style={{ width: "100%", height: "auto", maxHeight: "70vh", objectFit: "contain" }}
+                width={600}
+                height={500}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  maxHeight: "70vh",
+                  objectFit: "contain",
+                  borderRadius: "10px",
+                }}
                 quality={100}
               />
             </div>

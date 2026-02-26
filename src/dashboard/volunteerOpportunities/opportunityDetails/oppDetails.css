@@ -1,53 +1,42 @@
 .details-container {
-  /* padding: 40px; */
-  direction: rtl;
   max-width: 1200px;
   margin: 0 auto;
 }
-
-.back-link {
-  display: inline-flex;
+.details-container .back-link {
+  display: inline-block;
   align-items: center;
   gap: 8px;
   color: #7c3aed;
   text-decoration: none;
   font-weight: 600;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
-
-.details-grid {
+.details-container .details-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 40px;
   align-items: start;
 }
-
-/* المحتوى الرئيسي */
-.details-main {
+.details-container .details-main {
   background: white;
-  /* padding: 40px; */
   border-radius: 24px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
-
-.header-section h1 {
+.details-container .header-section h1 {
   font-size: 32px;
   color: #1e293b;
   margin-bottom: 10px;
 }
-
-.org-name-detail {
+.details-container .org-name-detail {
   font-size: 18px;
   color: #7c3aed;
   font-weight: 500;
   margin-bottom: 30px;
 }
-
-.info-section {
+.details-container .info-section {
   margin-bottom: 35px;
 }
-
-.info-section h3 {
+.details-container .info-section h3 {
   font-size: 20px;
   color: #1e293b;
   margin-bottom: 15px;
@@ -55,46 +44,41 @@
   align-items: center;
   gap: 10px;
 }
-
-.section-icon { color: #7c3aed; }
-
-.info-section p {
+.details-container .section-icon {
+  color: #7c3aed;
+}
+.details-container .info-section p {
   color: #64748b;
   line-height: 1.8;
   font-size: 16px;
 }
-
-.tasks-list {
+.details-container .tasks-list {
   list-style: none;
   padding: 0;
 }
-
-.tasks-list li {
+.details-container .tasks-list li {
   margin-bottom: 12px;
   color: #475569;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
-.tasks-list li svg { color: #10b981; }
-
-.skills-tags {
+.details-container .tasks-list li svg {
+  color: #10b981;
+}
+.details-container .skills-tags {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
-
-.skill-tag {
+.details-container .skill-tag {
   background: #f1f5f9;
   color: #475569;
   padding: 6px 15px;
   border-radius: 20px;
   font-size: 14px;
 }
-
-/* الكارت الجانبي */
-.sticky-card {
+.details-container .sticky-card {
   background: white;
   padding: 30px;
   border-radius: 24px;
@@ -102,16 +86,14 @@
   position: sticky;
   top: 100px;
 }
-
-.sidebar-stat {
+.details-container .sidebar-stat {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
   padding-bottom: 15px;
   border-bottom: 1px solid #f1f5f9;
 }
-
-.stat-label {
+.details-container .stat-label {
   font-size: 13px;
   color: #94a3b8;
   margin-bottom: 5px;
@@ -119,24 +101,21 @@
   align-items: center;
   gap: 6px;
 }
-
-.stat-value {
+.details-container .stat-value {
   font-size: 16px;
   font-weight: 600;
   color: #1e293b;
 }
-
-.stat-value.highlight { color: #f59e0b; }
-
-/* الأزرار */
-.action-buttons {
+.details-container .stat-value.highlight {
+  color: #f59e0b;
+}
+.details-container .action-buttons {
   display: flex;
   flex-direction: column;
   gap: 15px;
   margin-top: 25px;
 }
-
-.btn-primary-apply {
+.details-container .btn-primary-apply {
   background: #7c3aed;
   color: white;
   border: none;
@@ -147,13 +126,11 @@
   cursor: pointer;
   transition: 0.3s;
 }
-
-.btn-primary-apply:hover {
+.details-container .btn-primary-apply:hover {
   background: #5b21b6;
   transform: translateY(-2px);
 }
-
-.btn-secondary-share {
+.details-container .btn-secondary-share {
   background: #f5f3ff;
   color: #7c3aed;
   border: 1px dashed #7c3aed;
@@ -163,14 +140,16 @@
   cursor: pointer;
   transition: 0.3s;
 }
-
-.btn-secondary-share.copied {
+.details-container .btn-secondary-share.copied {
   background: #ecfdf5;
   color: #10b981;
   border-color: #10b981;
 }
-
 @media (max-width: 992px) {
-  .details-grid { grid-template-columns: 1fr; }
-  .sticky-card { position: static; }
+  .details-container .details-grid {
+    grid-template-columns: 1fr;
+  }
+  .details-container .sticky-card {
+    position: static;
+  }
 }

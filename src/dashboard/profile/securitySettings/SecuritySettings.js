@@ -17,10 +17,10 @@ export default function SecuritySettings() {
   const [is2FAEnabled, setIs2FAEnabled] = useState(false);
 
   return (
-    <div className="security-page" dir="rtl">
+    <div className="security-page">
       {/* رأس الصفحة */}
       <div className="header-flex">
-        <div className="text-right">
+        <div style={{textAlign:"start"}}>
           <h1 className="main-title">إعدادات الأمان</h1>
           <p className="sub-title">
             تحكم في حماية حسابك وكلمات المرور الخاصة بك.

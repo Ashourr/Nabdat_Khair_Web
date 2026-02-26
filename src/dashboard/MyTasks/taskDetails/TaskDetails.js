@@ -83,9 +83,9 @@ export default function TaskDetails() {
   };
 
   return (
-    <div className="task-details-page" dir="rtl">
+    <div className="task-details-page">
       <Link
-        href={`/${locale}/dashboard/volunteer/my-tasks`}
+        href={`/${locale}/dashboard/volunteer/myTasks`}
         className="back-link"
       >
         <FontAwesomeIcon icon={faArrowRight} /> العودة لمهامي
@@ -188,10 +188,10 @@ export default function TaskDetails() {
 
       {/* --- نافذة إنهاء المهمة --- */}
       {showFinishModal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
+        <div className="modal-overlay" onClick={() => setShowFinishModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h3>تقرير إتمام المهمة</h3>
+              <h3 style={{margin:"0px"}}>تقرير إتمام المهمة</h3>
               <button
                 className="close-x"
                 onClick={() => setShowFinishModal(false)}

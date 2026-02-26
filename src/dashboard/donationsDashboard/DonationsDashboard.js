@@ -13,7 +13,6 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 import Select from "react-select";
 
-// ✅ 1. نقل المصفوفة خارج المكون يمنع إعادة تعريفها في كل رندر ويحل مشكلة التحذيرات نهائياً
 const DONATIONS_DATA = [
   {
     id: 1,
@@ -45,28 +44,31 @@ export default function DonationsDashboard() {
   const locale = useLocale();
   const [search, setSearch] = useState("");
 
-  // ✅ 2. خيارات الأنواع (يفضل استخدام useMemo لأنها تعتمد على locale)
-  const typeOptionsByLocale = useMemo(() => [
-    { value: "all", label: locale === "en" ? "All Types" : "كل الأنواع" },
-    { value: "مالي", label: locale === "en" ? "Financial" : "مالي" },
-    { value: "عيني", label: locale === "en" ? "In-kind" : "عيني" },
-  ], [locale]);
-
-  // ✅ 3. استخراج التواريخ الفريدة (الآن تعتمد على المصفوفة الثابتة بالخارج)
-  const uniqueDates = useMemo(
-    () => [...new Set(DONATIONS_DATA.map((item) => item.date))],
-    [] // مصفوفة فارغة لأن البيانات ثابتة بالخارج
+  const typeOptionsByLocale = useMemo(
+    () => [
+      { value: "all", label: locale === "en" ? "All Types" : "كل الأنواع" },
+      { value: "مالي", label: locale === "en" ? "Financial" : "مالي" },
+      { value: "عيني", label: locale === "en" ? "In-kind" : "عيني" },
+    ],
+    [locale],
   );
 
-  const dateOptionsByLocale = useMemo(() => [
-    { value: "all", label: locale === "en" ? "All Dates" : "كل التواريخ" },
-    ...uniqueDates.map((date) => ({ value: date, label: date })),
-  ], [locale, uniqueDates]);
+  const uniqueDates = useMemo(
+    () => [...new Set(DONATIONS_DATA.map((item) => item.date))],
+    [],
+  );
+
+  const dateOptionsByLocale = useMemo(
+    () => [
+      { value: "all", label: locale === "en" ? "All Dates" : "كل التواريخ" },
+      ...uniqueDates.map((date) => ({ value: date, label: date })),
+    ],
+    [locale, uniqueDates],
+  );
 
   const [selectedType, setSelectedType] = useState(typeOptionsByLocale[0]);
   const [selectedDate, setSelectedDate] = useState(dateOptionsByLocale[0]);
 
-  // ✅ 4. منطق الفلترة المحسن
   const filteredDonations = useMemo(() => {
     return DONATIONS_DATA.filter((item) => {
       const matchesSearch = item.entity
@@ -113,11 +115,14 @@ export default function DonationsDashboard() {
       <header className="page-header">
         <div className="header-text">
           <h1>{locale === "en" ? "Donations Record" : "سجل التبرعات"}</h1>
-          <p>{locale === "en" ? "View and manage all your past donations" : "عرض وإدارة جميع تبرعاتك السابقة وتقاريرك المالية"}</p>
+          <p>
+            {locale === "en"
+              ? "View and manage all your past donations"
+              : "عرض وإدارة جميع تبرعاتك السابقة وتقاريرك المالية"}
+          </p>
         </div>
       </header>
 
-      {/* Stats Section */}
       <section className="stats-grid">
         {stats.map((stat, index) => (
           <div
@@ -137,7 +142,6 @@ export default function DonationsDashboard() {
         ))}
       </section>
 
-      {/* Filters Section */}
       <section className="filters-section">
         <div className="filters-grid">
           <div className="search">
@@ -147,7 +151,9 @@ export default function DonationsDashboard() {
               onChange={(e) => setSearch(e.target.value)}
               type="text"
               className="search-input"
-              placeholder={locale === "en" ? "Search for an entity" : "ابحث عن جهة التبرع"}
+              placeholder={
+                locale === "en" ? "Search for an entity" : "ابحث عن جهة التبرع"
+              }
             />
             <FontAwesomeIcon icon={faSliders} className="icon2" />
           </div>
@@ -175,7 +181,6 @@ export default function DonationsDashboard() {
         </div>
       </section>
 
-      {/* Table Section */}
       <div className="content-grid">
         <div className="card table-card">
           <div className="table-wrapper">
@@ -195,8 +200,14 @@ export default function DonationsDashboard() {
                   <tr>
                     <td colSpan="6" className="no-data">
                       <div className="empty-state">
-                        <p>{locale === "en" ? "No donations yet" : "ليس لديك أي تبرعات حالياً"}</p>
-                        <Link href="/donate" className="btn-primary">تبرع الآن</Link>
+                        <p>
+                          {locale === "en"
+                            ? "No donations yet"
+                            : "ليس لديك أي تبرعات حالياً"}
+                        </p>
+                        <Link href="/donate" className="btn-primary">
+                          تبرع الآن
+                        </Link>
                       </div>
                     </td>
                   </tr>
@@ -204,7 +215,11 @@ export default function DonationsDashboard() {
                   <tr>
                     <td colSpan="6" className="no-results">
                       <div className="empty-state">
-                        <p>{locale === "en" ? "No matches found" : "لا توجد نتائج تطابق بحثك"}</p>
+                        <p>
+                          {locale === "en"
+                            ? "No matches found"
+                            : "لا توجد نتائج تطابق بحثك"}
+                        </p>
                         <button
                           onClick={() => {
                             setSearch("");
@@ -213,7 +228,9 @@ export default function DonationsDashboard() {
                           }}
                           className="reset-btn"
                         >
-                          {locale === "en" ? "Clear Filters" : "إعادة ضبط الفلاتر"}
+                          {locale === "en"
+                            ? "Clear Filters"
+                            : "إعادة ضبط الفلاتر"}
                         </button>
                       </div>
                     </td>
@@ -223,19 +240,34 @@ export default function DonationsDashboard() {
                     <tr key={item.id}>
                       <td>{item.entity}</td>
                       <td>
-                        <span className={item.type === "مالي" ? "status success" : "status pending"}>
+                        <span
+                          className={
+                            item.type === "مالي"
+                              ? "status success"
+                              : "status pending"
+                          }
+                        >
                           {item.type}
                         </span>
                       </td>
                       <td>{item.amount}</td>
                       <td>{item.date}</td>
                       <td>
-                        <span className={item.status === "مكتمل" ? "status success" : "status pending"}>
+                        <span
+                          className={
+                            item.status === "مكتمل"
+                              ? "status success"
+                              : "status pending"
+                          }
+                        >
                           {item.status}
                         </span>
                       </td>
                       <td>
-                        <Link href={`/${locale}/dashboard/user/donations/${item.id}`} className="details-link">
+                        <Link
+                          href={`/${locale}/dashboard/user/donations/${item.id}`}
+                          className="details-link"
+                        >
                           {locale === "en" ? "View Details" : "عرض التفاصيل"}
                         </Link>
                       </td>

@@ -150,3 +150,22 @@
     color: #2a446c;
   }
 }
+@media (max-width: 550px) {
+  .header .hamburger-btn {
+    padding: 0.25rem;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .header .search-container {
+    margin: 0 10px;
+  }
+  .header .search-wrapper {
+    margin: 0 !important;
+  }
+  .header .header-actions {
+    gap: 10px;
+  }
+  .header .header-container {
+    padding: 0 10px;
+  }
+}

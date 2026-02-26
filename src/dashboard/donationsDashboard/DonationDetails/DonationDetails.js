@@ -18,20 +18,20 @@ export default function DonationDetails({ id }) {
   const locale = useLocale();
   const printRef = useRef();
 
-    // const donation = {
-    //   id: id || 1,
-    //   type: "مالي",
-    //   entity: "جمعية البر الخيرية",
-    //   donorName: "أحمد محمد",
-    //   date: "21 فبراير 2026",
-    //   referenceNumber: "REF-9920334",
-    //   status: "مكتمل",
-    //   paymentMethod: "بطاقة ائتمانية",
-    //   amount: "1,000.00",
-    //   tax: "150.00",
-    //   totalAmount: "1,150.00",
-    //   currency: "ج.م",
-    // };
+  // const donation = {
+  //   id: id || 1,
+  //   type: "مالي",
+  //   entity: "جمعية البر الخيرية",
+  //   donorName: "أحمد محمد",
+  //   date: "21 فبراير 2026",
+  //   referenceNumber: "REF-9920334",
+  //   status: "مكتمل",
+  //   paymentMethod: "بطاقة ائتمانية",
+  //   amount: "1,000.00",
+  //   tax: "150.00",
+  //   totalAmount: "1,150.00",
+  //   currency: "ج.م",
+  // };
 
   const donation = {
     id: id || 1,
@@ -163,7 +163,7 @@ export default function DonationDetails({ id }) {
 
           <div className="disclaimer">
             <FontAwesomeIcon icon={faInfoCircle} />
-            <p>
+            <p style={{ margin: "0" }}>
               هذا المستند يعتبر إيصالاً رسمياً بالتبرع الموضح أعلاه، شكراً
               لعطائكم.
             </p>

@@ -22,7 +22,6 @@ export default function OpportunityDetails() {
   const [copied, setCopied] = useState(false);
   const [isApplied, setIsApplied] = useState(false);
 
-  // بيانات الفرصة
   const opportunity = {
     title: "تعليم أساسيات الحاسوب للأطفال",
     org: "مؤسسة العلم نور",
@@ -105,7 +104,7 @@ export default function OpportunityDetails() {
   return (
     <div className="details-container">
       {/* Back Button */}
-      <Link href={`/${locale}/dashboard/volunteer/opportunities`} className="back-link">
+      <Link href={`/${locale}/dashboard/volunteer/opportunities`} className="back-link mb-5">
         <FontAwesomeIcon icon={faArrowRight} /> العودة للفرص
       </Link>
 

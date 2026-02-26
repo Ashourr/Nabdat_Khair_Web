@@ -1,27 +1,18 @@
-.opp-container {
-  /* padding: 30px; */
-  direction: rtl;
-  /* background-color: #f8fafc; */
-  min-height: 100vh;
-}
-
-.opp-header {
+.opp-container  .opp-header {
   margin-bottom: 40px;
 }
-.opp-header h2 {
+.opp-container  .opp-header h2 {
   font-size: 28px;
   color: #1e293b;
 }
-.opp-header h2 span {
+.opp-container  .opp-header h2 span {
   color: #7c3aed;
 }
-.opp-header p {
+.opp-container  .opp-header p {
   color: #64748b;
   margin-top: 10px;
 }
-
-/* الفلاتر */
-.filters-bar {
+.opp-container  .filters-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -32,14 +23,12 @@
   margin-bottom: 30px;
   align-items: center;
 }
-
-.search-box {
+.opp-container  .search-box {
   flex: 2;
   position: relative;
   min-width: 250px;
 }
-
-.search-box input {
+.opp-container  .search-box input {
   width: 100%;
   padding: 12px 45px 12px 15px;
   border: 1px solid #e2e8f0;
@@ -49,23 +38,20 @@
   outline: none;
   font-size: 14px;
 }
-
-.search-icon {
+.opp-container  .search-icon {
   position: absolute;
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
   color: #94a3b8;
 }
-
-.select-filters {
+.opp-container  .select-filters {
   flex: 3;
   display: flex;
   gap: 15px;
   min-width: 300px;
 }
-
-.select-filters select {
+.opp-container  .select-filters select {
   flex: 1;
   padding: 12px;
   border: 1px solid #e2e8f0;
@@ -75,15 +61,12 @@
   color: #475569;
   cursor: pointer;
 }
-
-/* كروت الفرص */
-.opp-grid {
+.opp-container  .opp-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 25px;
 }
-
-.opportunity-card {
+.opp-container  .opportunity-card {
   background: #fff;
   border-radius: 20px;
   overflow: hidden;
@@ -92,86 +75,75 @@
   display: flex;
   flex-direction: column;
 }
-
-.opportunity-card:hover {
+.opp-container  .opportunity-card:hover {
   transform: translateY(-10px);
 }
-
-.opp-card-header {
+.opp-container  .opp-card-header {
   padding: 20px 20px 0;
   display: flex;
   justify-content: space-between;
 }
-
-.type-tag {
+.opp-container  .type-tag {
   padding: 5px 12px;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 600;
 }
-
-.type-tag.remote {
+.opp-container  .type-tag.remote {
   background: #ecfdf5;
   color: #10b981;
 }
-.type-tag.onsite {
+.opp-container  .type-tag.onsite {
   background: #eff6ff;
   color: #3b82f6;
 }
-
-.category-tag {
+.opp-container  .category-tag {
   font-size: 12px;
   color: #64748b;
   background: #f1f5f9;
   padding: 5px 12px;
   border-radius: 8px;
 }
-
-.opp-card-body {
+.opp-container  .opp-card-body {
   padding: 20px;
   flex-grow: 1;
 }
-.opp-title {
+.opp-container  .opp-title {
   font-size: 18px;
   color: #1e293b;
   margin-bottom: 8px;
 }
-.org-name {
+.opp-container  .org-name {
   font-size: 14px;
   color: #7c3aed;
   margin-bottom: 15px;
 }
-.opp-desc {
+.opp-container  .opp-desc {
   font-size: 13.5px;
   color: #64748b;
   line-height: 1.6;
   margin-bottom: 20px;
 }
-
-.opp-details {
+.opp-container  .opp-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
-
-.detail-item {
+.opp-container  .detail-item {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 13px;
   color: #475569;
 }
-
-.detail-item svg {
+.opp-container  .detail-item svg {
   color: #94a3b8;
 }
-
-.opp-card-footer {
+.opp-container  .opp-card-footer {
   padding: 20px;
   border-top: 1px solid #f1f5f9;
 }
-
-.apply-now-btn {
+.opp-container  .apply-now-btn {
   width: 100%;
   padding: 12px;
   background: #7c3aed;
@@ -182,26 +154,11 @@
   cursor: pointer;
   transition: 0.3s;
 }
-
-.apply-now-btn:hover {
+.opp-container  .apply-now-btn:hover {
   background: #5b21b6;
 }
-
-/* استجابة الشاشات */
-@media (max-width: 768px) {
-  .select-filters {
-    flex-direction: column;
-  }
-  .filters-bar {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0;
-  }
-}
-
-/* زر التقديم بعد النجاح */
-.btn-applied-success {
-  background: #10b981 !important; /* لون أخضر */
+.opp-container  .btn-applied-success {
+  background: #10b981 !important;
   color: white;
   border: none;
   padding: 16px;
@@ -214,15 +171,18 @@
   justify-content: center;
   gap: 8px;
 }
-
-/* تنسيق SweetAlert2 ليتماشى مع اللغة العربية */
-.swal2-title,
-.swal2-html-container {
-  font-family: "Cairo", sans-serif !important; /* أو الخط المستخدم في مشروعك */
-  direction: rtl;
-}
-
-.swal2-confirm {
+.opp-container  .swal2-confirm {
   padding: 12px 30px !important;
   font-weight: 600 !important;
+}
+
+@media (max-width: 768px) {
+  .opp-container  .select-filters {
+    flex-direction: column;
+  }
+ .opp-container   .filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+  }
 }
