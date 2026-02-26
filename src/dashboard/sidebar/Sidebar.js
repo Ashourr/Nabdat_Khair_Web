@@ -14,6 +14,7 @@ import {
   faGlobe,
   faListCheck,
   faStar,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { faWpforms } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -240,6 +241,14 @@ export default function Sidebar({ isMobileOpen = false, onMobileToggle }) {
         ref={sidebarRef}
         className={`mobile-sidebar ${isMobileOpen ? "open" : ""} ${isRTL ? "rtl" : "ltr"}`}
       >
+        {/* ✅ زر الإغلاق هنا */}
+        <button
+          className="close-btn-outside"
+          onClick={() => onMobileToggle(false)}
+        >
+          <FontAwesomeIcon icon={faXmark} />
+        </button>
+
         <SidebarContent closeAll={closeAll} />
       </aside>
     </>
